@@ -1,0 +1,7 @@
+<view class="container">
+  <image class="background-image" src="/images/log/mmbiz.jpg" mode="aspectFill"></image>
+    <p class="content">福友邦</p>
+    <view class="nihao">
+        <text>您好，欢迎登录</text>
+    </view>
+</view>

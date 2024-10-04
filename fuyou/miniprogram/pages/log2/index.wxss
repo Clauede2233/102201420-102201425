@@ -1,0 +1,184 @@
+/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+    font-family: "Regular";
+    font-weight: 800;
+    src: url("//at.alicdn.com/wf/webfont/mxblSXarYhDN/umXpbOXdLdkb.woff2") format("woff2"),
+    url("//at.alicdn.com/wf/webfont/mxblSXarYhDN/cnjFbdLDEM1y.woff") format("woff");
+    font-display: swap;
+  }
+.container {
+    position: relative; /* 为了让内容可以覆盖在图片上 */
+    width: 100%;
+    height: 100vh; /* 设置高度为视口高度 */
+}
+
+.background-image {
+  width: 100%;
+  height: 100%; /* 使图片填满整个容器 */
+  opacity: 0; /* 设置透明度，范围从 0（完全透明）到 1（完全不透明） */
+}
+
+.content {
+  position: absolute; /* 绝对定位以覆盖在图片上 */
+  top: 10%;
+  left: 40%;
+  transform: translate(1%, -50%); /* 居中对齐 */
+  font-family: 'Regular', sans-serif; /* 设置字体 */
+  font-style: italic;
+  font-size: 70px;
+  color: rgb(255, 107, 107); /* 设置文本颜色 */
+  text-align: center; /* 文本居中 */
+}
+.nihao {
+  position: absolute; /* 绝对定位以覆盖在图片上 */
+  top: 18%;
+  left: 10%;
+  /*transform: translate(-50%, -50%); /* 居中对齐 */
+  font-family: 'Arial', sans-serif; /* 设置字体 */
+  font-weight: bold;
+  font-size: 30px;
+  color: rgb(0, 0, 0); /* 设置文本颜色 */
+  text-align: center; /* 文本居中 */
+}
+.tishi {
+  position: absolute; /* 绝对定位以覆盖在图片上 */
+  top: 27%;
+  left: 10%;
+  /*transform: translate(-50%, -50%); /* 居中对齐 */
+  font-family: 'Arial', sans-serif; /* 设置字体 */
+  font-weight: bold;
+  opacity: 0.75;
+  font-size: 13px;
+  color: rgb(132, 132, 132); /* 设置文本颜色 */
+  text-align: center; /* 文本居中 */
+}
+
+.container {
+  position: absolute;
+  padding: 5px;
+}
+
+.label {
+  position: absolute;
+  top: 33%;
+  left: 10%;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.input-box {
+  position: absolute; /* 设置为绝对定位 */
+  top: 36%;
+  left: 5%;
+  height: 20px;
+  opacity: 0.9;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 16px;
+  margin-top: 20px; /* 设置与上方元素的间距 */
+  margin-left: 10px; /* 设置左侧间距 */
+  margin-right: 10px; /* 设置右侧间距 */
+}
+.label2 {
+  position: absolute;
+  top: 48%;
+  left: 10%;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.input-box2 {
+  position: absolute; /* 设置为绝对定位 */
+  top: 51%;
+  left: 5%;
+  height: 20px;
+  opacity: 0.9;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 16px;
+  margin-top: 20px; /* 设置与上方元素的间距 */
+  margin-left: 10px; /* 设置左侧间距 */
+  margin-right: 10px; /* 设置右侧间距 */
+}
+.submit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.IDchange {
+  position: absolute;
+  top: 30%;
+  left: 64%;
+  background-color: #ff6565;
+  color:rgb(255, 255, 255);
+  font-weight: bold;
+  border-radius: 50rpx;
+  font-size: 12px;
+  text-align: center;
+}
+.submit-button {
+  position: absolute;
+  top: 65%;
+  line-height: 50rpx;
+  background-color: #007aff;
+  color:rgb(255, 255, 255);
+  font-weight: bold;
+  border-radius: 20rpx;
+  cursor: pointer;
+}
+.tishi2 {
+  position: absolute;
+  top: 75%;
+  left: 25%;
+  font-size: 17px;
+  color: #a0a0a0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.register{
+    margin: 80rpx auto;
+}
+.join{
+  position: absolute;
+  top: 75%;
+  left: 58%;
+  width:100%;
+  color: #007aff;
+  border: none;
+  border-radius: 30px;
+  font-size: 17px;
+}
+.join{
+  position: absolute;
+  top: 75%;
+  left: 58%;
+  width:100%;
+  color: #007aff;
+  border: none;
+  border-radius: 30px;
+  font-size: 17px;
+}
+.label3{
+  position: absolute;
+  top: 92%;
+  left: 50%;
+  width:100%;
+  color: #000000;
+  border: none;
+  border-radius: 30px;
+  font-size: 10px;
+}
+.label4{
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  width:100%;
+  color: #000000;
+  border: none;
+  border-radius: 30px;
+  font-size: 10px;
+}

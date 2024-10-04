@@ -1,0 +1,46 @@
+<view class="container">
+  <image class="background-image" src="/images/log/mmbiz.jpg" mode="aspectFill"></image>
+    <p class="content">福友邦</p>
+    <view class="nihao">
+        <text>您好，欢迎登录</text>
+    </view> 
+    <view class="tishi">
+        <text>学生请使用个人学号登录</text>
+    </view>    
+    <view class="container">
+        <view class="label">
+            <text>学号：</text>
+        </view>   
+        <input 
+            class="input-box" 
+            type="text" 
+            placeholder="在这里输入..." 
+            bindinput="onInput1" 
+        />
+        <view class="label2">
+            <text>密码：</text>
+        </view>   
+        <input 
+            class="input-box2" 
+            type="text" 
+            placeholder="在这里输入..." 
+            bindinput="onInput2" 
+        />       
+    </view>
+    <view class= "submit">
+        <button class ="IDchange" style="width: 200rpx" bindtap="navigateToLink0">我是导师</button>
+        <button class ="submit-button" bindtap="login">登录</button>
+    </view>
+     <view class="tishi2">
+        <text>还没有账号？</text>
+    </view>     
+    <view class = "register">
+        <navigator class="join" url="/pages/register/index">立即注册</navigator>   
+    </view>
+    <view class = "label3">
+        <text style="white-space: pre;">版本号：1.0.8    更新日期：2024.10.10</text>   
+    </view>   
+    <view class = "label4">
+        <text style="white-space: pre;">负责人：林&郑  联系方式：1835001xxxx</text>   
+    </view>     
+</view>

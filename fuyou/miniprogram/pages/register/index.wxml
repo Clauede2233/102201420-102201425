@@ -1,0 +1,47 @@
+<view class="container">
+  <image class="background-image" src="/images/log/mmbiz.jpg" mode="aspectFill"></image>
+    <p class="content">福友邦</p>
+    <view class="nihao">
+        <text>您好，新用户</text>
+    </view>
+    <view class="tishi">
+        <text>请填写以下个人信息</text>
+    </view>
+    <view class="container">
+        <view class="label0">
+            <text>您的身份是：</text>
+        </view>  
+        <radio-group class="input-box0" bindchange="onIDChange">
+          <label wx:for="{{IDOptions}}" wx:key="index">
+            <radio value="{{index}}">{{item}}</radio>
+          </label>
+        </radio-group>
+        <view class="label">
+            <text>学号/工号：</text>
+        </view>   
+        <input 
+            class="input-box1" 
+            type="text" 
+            placeholder="在这里输入..." 
+            bindinput="onInput1" 
+        />
+      <view class="label2">
+            <text>密码：</text>
+        </view>   
+        <input 
+            class="input-box2" 
+            type="text" 
+            placeholder="在这里输入..." 
+            bindinput="onInput2" 
+        />  
+    </view>
+    <view class= "submit">
+        <button class="submit-button" bindtap="register">注册并登录</button>   
+    </view>     
+    <view class = "label3">
+        <text style="white-space: pre;">版本号：1.0.8    更新日期：2024.10.10</text>   
+    </view>   
+    <view class = "label4">
+        <text style="white-space: pre;">负责人：林&郑  联系方式：1835001xxxx</text>   
+    </view>     
+</view>
