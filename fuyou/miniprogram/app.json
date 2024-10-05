@@ -3,7 +3,12 @@
     "pages/log/index",
     "pages/log2/index",
     "pages/register/index",
-    "pages/home/index"
+    "pages/home/index",
+    "home/person/index",
+    "home/person/fix/index",
+    "home/person/privacy/index",
+    "home/person/privacy/fix0/index",
+    "home/person/privacy/fix1/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

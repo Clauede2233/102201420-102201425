@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="avatar-container">
+    <image src="{{avatarUrl}}" class="avatar" bindtap="chooseAvatar"></image>
+  </view>
+
+  <input class="name-input" placeholder="请输入姓名" value="{{name}}" bindinput="onNameInput"/>
+
+  <input class="major-input" placeholder="请输入专业" value="{{major}}" bindinput="onMajorInput"/>
+
+  <view class="button-container">
+    <button bindtap="saveProfile" class="save-button">保存</button>
+  </view>
+</view>

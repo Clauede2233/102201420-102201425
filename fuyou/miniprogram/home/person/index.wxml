@@ -1,0 +1,32 @@
+<view class="container">
+  <image class="background-image" src="/images/log/mmbiz.jpg" mode="aspectFill"></image>
+  <view class="avatar-container">
+    <image src="{{avatarUrl}}" class="avatar" bindtap="chooseAvatar"></image>
+  </view>
+  <view class="name">{{name}}</view>
+  <view class="major">{{major}}</view>
+  <view class="bottum-container">
+    <button bindtap="navigateToperson0"class="bottom-fix"
+    style="width: 200rpx">编辑</button>
+  </view>
+  <view class="background2"> 
+    <button bindtap="navigateToperson1"class="bottom-fix2"
+    style="width: 90%">账号管理</button>
+    <button bindtap="navigateToperson2"class="bottom-fix2"
+    style="width: 90%">好友管理</button>
+    <button bindtap="navigateToperson3"class="bottom-fix2"
+    style="width: 90%">项目列表</button>
+    <button bindtap="navigateToperson4"class="bottom-fix2"
+    style="width: 90%">用户反馈</button>
+  </view>
+  <view class="footer">
+    <button bindtap="navigateToPage1" class="bottom-button" 
+    style="width: 100rpx">社区</button>
+    <button bindtap="navigateToPage2" class="bottom-button" 
+    style="width: 100rpx">项目</button>
+    <button bindtap="navigateToPage3" class="bottom-button" 
+    style="width: 100rpx">导师</button>
+    <button bindtap="navigateToPage4" class="bottom-button" 
+    style="width: 100rpx">我的</button>
+  </view>
+</view>

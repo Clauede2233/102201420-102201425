@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="form-group">
+    <text>姓名：</text>
+    <input class="input-field" placeholder="请输入姓名" value="{{name}}" bindinput="onNameInput"/>
+    <text>性别：</text>
+    <picker mode="selector" range="{{genderOptions}}" bindchange="onGenderChange">
+      <view class="input-field">{{gender}}</view>
+    </picker>
+    <text>出生日月：</text>
+    <picker mode="date" bindchange="onBirthdayChange">
+      <view class="input-field">{{birthday}}</view>
+    </picker>
+    <text>账号：</text>
+    <input class="input-field" placeholder="请输入账号" value="{{account}}" bindinput="onAccountInput"/>
+    <text>手机号：</text>
+    <input class="input-field" placeholder="请输入手机号" value="{{phone}}" bindinput="onPhoneInput"/>
+    <text>个性签名：</text>
+    <textarea class="input-field" placeholder="请输入个性签名" value="{{signature}}" bindinput="onSignatureInput"></textarea>
+  </view>
+  <button class="submit-btn" bindtap="onSubmit">提交</button>
+</view>

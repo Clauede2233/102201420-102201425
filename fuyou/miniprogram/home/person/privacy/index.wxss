@@ -1,0 +1,43 @@
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* 垂直排列子元素 */
+}
+.container2 {
+  position: absolute; /* 使用绝对定位 */
+  left: 5%;
+  padding: 5px; /* 内边距 */
+  background-color: #f5f5f5; /* 背景色 */
+}
+.info-item {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.value {
+  margin-left: 10px;
+  color: #333;
+}
+.background2 {
+  flex: 1;
+  position: absolute; /* 使用绝对定位 */
+  top: 45%; /* 距离顶部20像素 */
+  border-radius: 30px; /* 圆角效果 */
+  background-color: rgb(255, 255, 255);
+  width: 100%; /* 矩形宽度占满整个容器 */
+}
+.bottom-fix2 {
+  background-color: rgb(225, 242, 246); /* 背景透明 */
+  border: 1px solid rgb(156, 205, 220); /* 边框颜色和宽度 */
+  color: rgb(240, 114, 114); /* 字体颜色 */
+  padding: 15px 20px;
+
+  cursor: pointer; /* 鼠标指针样式 */
+  letter-spacing: 10px; /* 设置字符间距 */
+  font-size: 20px; /* 字体大小 */
+  margin: 30px; /* 按钮间的间距 */
+}

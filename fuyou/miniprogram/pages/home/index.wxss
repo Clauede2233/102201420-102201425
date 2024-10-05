@@ -6,162 +6,38 @@
     url("//at.alicdn.com/wf/webfont/mxblSXarYhDN/cnjFbdLDEM1y.woff") format("woff");
     font-display: swap;
   }
-.container {
-    position: relative; /* 为了让内容可以覆盖在图片上 */
-    width: 100%;
-    height: 100vh; /* 设置高度为视口高度 */
-  }
-  
-  .background-image {
-    width: 100%;
-    height: 100%; /* 使图片填满整个容器 */
-    opacity: 0; /* 设置透明度，范围从 0（完全透明）到 1（完全不透明） */
-  }
-  
-  .content {
-    position: absolute; /* 绝对定位以覆盖在图片上 */
-    top: 10%;
-    left: 40%;
-    transform: translate(1%, -50%); /* 居中对齐 */
-    font-family: 'Regular', sans-serif; /* 设置字体 */
-    font-style: italic;
-    font-size: 70px;
-    color: rgb(255, 107, 107); /* 设置文本颜色 */
-    text-align: center; /* 文本居中 */
-  }
-  .nihao {
-    position: absolute; /* 绝对定位以覆盖在图片上 */
-    top: 18%;
-    left: 10%;
-    /*transform: translate(-50%, -50%); /* 居中对齐 */
-    font-family: 'Arial', sans-serif; /* 设置字体 */
-    font-weight: bold;
-    font-size: 30px;
-    color: rgb(0, 0, 0); /* 设置文本颜色 */
-    text-align: center; /* 文本居中 */
-  }
-  .tishi {
-    position: absolute; /* 绝对定位以覆盖在图片上 */
-    top: 25%;
-    left: 10%;
-    /*transform: translate(-50%, -50%); /* 居中对齐 */
-    font-family: 'Arial', sans-serif; /* 设置字体 */
-    font-weight: bold;
-    opacity: 0.75;
-    font-size: 13px;
-    color: rgb(132, 132, 132); /* 设置文本颜色 */
-    text-align: center; /* 文本居中 */
-  }
+.content {
+  position: absolute; /* 绝对定位以覆盖在图片上 */
+  display: flex;
+  flex-direction: column; /* 垂直排列子元素 */
+  top: 10%;
+  left: 40%;
+  transform: translate(1%, -50%); /* 居中对齐 */
+  font-family: 'Regular', sans-serif; /* 设置字体 */
+  font-style: italic;
+  font-size: 70px;
+  color: rgb(255, 107, 107); /* 设置文本颜色 */
+  text-align: center; /* 文本居中 */
+}
 
-  .container {
-    position: absolute;
-    padding: 5px;
-  }
-  
-  .label {
-    position: absolute;
-    top: 33%;
-    left: 10%;
-    font-size: 20px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .input-box {
-    position: absolute; /* 设置为绝对定位 */
-    top: 36%;
-    left: 5%;
-    height: 20px;
-    opacity: 0.9;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 4px;
-    padding: 5px;
-    font-size: 16px;
-    margin-top: 20px; /* 设置与上方元素的间距 */
-    margin-left: 10px; /* 设置左侧间距 */
-    margin-right: 10px; /* 设置右侧间距 */
-  }
-  .label2 {
-    position: absolute;
-    top: 46%;
-    left: 10%;
-    font-size: 20px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .input-box2 {
-    position: absolute; /* 设置为绝对定位 */
-    top: 49%;
-    left: 5%;
-    height: 20px;
-    opacity: 0.9;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 4px;
-    padding: 5px;
-    font-size: 16px;
-    margin-top: 20px; /* 设置与上方元素的间距 */
-    margin-left: 10px; /* 设置左侧间距 */
-    margin-right: 10px; /* 设置右侧间距 */
-  }
-  .submit-button {
-    top: 65%;
-    width:100%;
-    background-color: #007aff;
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 30px;
-    font-size: 20px;
-  }
-.tishi2 {
-  position: absolute;
-  top: 75%;
-  left: 25%;
-  font-size: 17px;
-  color: #a0a0a0;
-  margin-bottom: 10px;
-  text-align: center;
-}
-.register{
-    margin: 80rpx auto;
-}
-.join{
-  position: absolute;
-  top: 75%;
-  left: 58%;
-  width:100%;
-  color: #007aff;
-  border: none;
-  border-radius: 30px;
-  font-size: 17px;
-}
-.join{
-  position: absolute;
-  top: 75%;
-  left: 58%;
-  width:100%;
-  color: #007aff;
-  border: none;
-  border-radius: 30px;
-  font-size: 17px;
-}
-.label3{
+.footer {
   position: absolute;
   top: 92%;
-  left: 50%;
-  width:100%;
-  color: #000000;
-  border: none;
-  border-radius: 30px;
-  font-size: 10px;
+  display: flex; /* 使用 Flexbox 布局 */
+  justify-content: space-between; /* 平均分配按钮之间的空间 */
+  width: 100%; /* 根据需要设置宽度 */
+  background-color: rgb(255, 255, 255); 
+  text-align: center;
+  padding: 15px 0;
 }
-.label4{
-  position: absolute;
-  top: 95%;
-  left: 50%;
-  width:100%;
-  color: #000000;
-  border: none;
-  border-radius: 30px;
-  font-size: 10px;
+
+.bottom-button {
+  background-color: transparent; /* 背景透明 */
+  border: 1px solid rgb(0, 0, 0); /* 边框颜色和宽度 */
+  color: rgb(0, 0, 0); /* 字体颜色 */
+  padding: 5px 5px;
+  border-radius: 5px; /* 圆角 */
+  cursor: pointer; /* 鼠标指针样式 */
+  font-size: 10px; /* 字体大小 */
+  margin: 1px; /* 按钮间的间距 */
 }

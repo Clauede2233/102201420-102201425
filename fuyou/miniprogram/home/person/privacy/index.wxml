@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="container2">
+    <view class="info-item">
+      <text class="label">姓名：</text>
+      <text class="value">{{real_name}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">性别：</text>
+      <text class="value">{{gender}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">出生日期：</text>
+      <text class="value">{{birthDate}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">账号：</text>
+      <text class="value">{{account}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">手机号：</text>
+      <text class="value">{{phone}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">个性签名：</text>
+      <text class="value">{{signature}}</text>
+    </view>
+  </view>
+  <view class="background2">
+    <button bindtap="navigateTofix0"class="bottom-fix2"
+    style="width: 90%">信息维护</button>
+    <button bindtap="navigateTofix1"class="bottom-fix2"
+    style="width: 90%">修改密码</button>
+  </view>
+</view>
