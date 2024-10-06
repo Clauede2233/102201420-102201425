@@ -6,7 +6,7 @@ cloud.init();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const { username, oldPassword, newPassword, confirmPassword } = event;
+  const { account, oldPassword, newPassword, confirmPassword } = event;
   const db = cloud.database();
   const userCollection = db.collection('users');
   // 获取当前用户信息
@@ -14,9 +14,9 @@ exports.main = async (event, context) => {
   console.log('用户OpenID:', userInfo);
 
   try {
-    // 先查询出对应用户名的用户文档
+    // 先查询出对应账号的用户文档
     const queryResult = await userCollection.where({
-      username
+      account
     }).get();
 
     if (queryResult.data.length === 0) {
