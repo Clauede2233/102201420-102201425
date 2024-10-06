@@ -17,6 +17,10 @@
     <text>暂无项目发布</text>
   </view>
   </view>
+  <view class="bottum-container2">
+    <button bindtap="ProjectDetail"class="bottom-fix2"
+    style="width: 170rpx">项目详情</button>
+  </view>
   <view class="footer">
     <button bindtap="navigateToPage1" class="bottom-button" 
     style="width: 100rpx">社区</button>

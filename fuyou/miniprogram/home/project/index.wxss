@@ -107,3 +107,18 @@
   color: #999;
   margin-top: 5rpx;
 }
+.bottum-container2 {
+  position: absolute; /* 使用绝对定位 */
+  top: 30%;
+  left: 68%;
+}
+.bottom-fix2 {
+  background-color: rgb(228, 89, 89); /* 背景透明 */
+  border: 0px solid rgb(255, 255, 255); /* 边框颜色和宽度 */
+  color: rgb(255, 255, 255); /* 字体颜色 */
+  padding: 4px 5px;
+  border-radius: 10px; /* 圆角 */
+  cursor: pointer; /* 鼠标指针样式 */
+  font-size: 14px; /* 字体大小 */
+  margin: 1px; /* 按钮间的间距 */
+}

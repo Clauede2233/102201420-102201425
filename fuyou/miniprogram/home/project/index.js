@@ -28,6 +28,11 @@ Page({
       url: `/pages/projectDetail/projectDetail?id=${projectId}`
     });
   },
+  ProjectDetail: function(event) {
+    wx.navigateTo({
+      url: '/home/project/detail/index'
+    });
+  },
   navigateTocreate: function() {
     wx.navigateTo({
       url: '/home/project/create/index' // 替换为目标页面的路径
