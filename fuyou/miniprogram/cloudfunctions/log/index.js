@@ -8,15 +8,15 @@ const db = cloud.database();
 
 // 登录云函数入口
 exports.main = async (event, context) => {
-  const { username, password, role } = event;  // 从事件中解构 username, password, 和 role
+  const { account, password, role } = event;  // 从事件中解构 username, password, 和 role
   try {
     // 输入验证
-    if (!username || !password) {
+    if (!account || !password) {
       return { success: false, message: '用户名和密码不能为空' };
     }
 
     // 查找用户
-    const userQuery = await db.collection('users').where({ username }).get();
+    const userQuery = await db.collection('users').where({ account }).get();
     if (userQuery.total === 0) {
       return { success: false, message: '用户不存在' };
     }

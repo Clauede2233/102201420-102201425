@@ -3,9 +3,7 @@ Page({
     username: '', // 账号
     oldPassword: '', // 旧密码
     newPassword: '', // 新密码
-    confirmPassword: '', // 确认新密码
-    phone: '', // 手机号
-    verificationCode: '' // 验证码
+    confirmPassword: '' // 确认新密码
   },
 
   onUsernameInput: function(event) {
@@ -32,12 +30,11 @@ Page({
     });
   },
 
-
-  updateAccount: function() {
+  updatePassword: function() {
     const { username, oldPassword, newPassword, confirmPassword } = this.data;
 
     // 简单的验证
-    if (!username || !oldPassword || !newPassword || !confirmPassword ) {
+    if (!username || !oldPassword || !newPassword || !confirmPassword) {
       wx.showToast({
         title: '请填写完整信息',
         icon: 'none'
@@ -53,18 +50,29 @@ Page({
       return;
     }
 
-    // 此处可以添加更新逻辑，如调用 API 更新用户信息
-    wx.showToast({
-      title: '信息更新成功',
-      icon: 'success'
-    });
-
-    // 清空输入框
-    this.setData({
-      username: '',
-      oldPassword: '',
-      newPassword: '',
-      confirmPassword: '',
+    // 调用云函数更新密码
+    wx.cloud.callFunction({
+      name: 'updatePassword', // 云函数名称
+      data: {
+        username,
+        oldPassword,
+        newPassword,
+        confirmPassword
+      },
+      success: function(res) {
+        console.log('密码更新成功', res);
+        wx.showToast({
+          title: '密码更新成功',
+          icon: 'success'
+        });
+      },
+      fail: function(err) {
+        console.error('密码更新失败', err);
+        wx.showToast({
+          title: '密码更新失败',
+          icon: 'none'
+        });
+      }
     });
   }
 });

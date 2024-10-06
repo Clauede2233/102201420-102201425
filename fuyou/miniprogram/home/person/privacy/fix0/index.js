@@ -35,11 +35,40 @@ Page({
 
   onSubmit() {
     const { name, gender, birthday, account, phone, signature } = this.data;
-    // 在这里可以进行数据的验证和提交
-    console.log('提交数据:', { name, gender, birthday, account, phone, signature });
-    wx.showToast({
-      title: '提交成功',
-      icon: 'success'
+    // 数据验证（根据需要添加）
+    if (!name || !gender || !birthday || !account || !phone || !signature) {
+      wx.showToast({
+        title: '请填写所有字段',
+        icon: 'none'
+      });
+      return;
+    }
+
+    // 调用云函数保存用户信息
+    wx.cloud.callFunction({
+      name: 'saveUserInfo',
+      data: {
+        name,
+        gender,
+        birthday,
+        account,
+        phone,
+        signature
+      },
+      success: function(res) {
+        console.log('用户信息保存成功', res);
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success'
+        });
+      },
+      fail: function(err) {
+        console.error('保存失败', err);
+        wx.showToast({
+          title: '提交失败',
+          icon: 'none'
+        });
+      }
     });
   }
 });

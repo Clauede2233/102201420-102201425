@@ -8,6 +8,6 @@
   <input class="input-field" placeholder="请确认新密码" value="{{confirmPassword}}" bindinput="onConfirmPasswordInput" password="true"/>
 
   <view class="button-container">
-    <button bindtap="updateAccount" class="update-button">更新信息</button>
+    <button bindtap="updatePassword" class="update-button">更新信息</button>
   </view>
 </view>

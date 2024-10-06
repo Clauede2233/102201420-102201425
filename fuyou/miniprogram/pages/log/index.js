@@ -24,7 +24,7 @@ Page({
     wx.cloud.callFunction({
       name: 'log',
       data: {
-        username: inputValue1,
+        account: inputValue1,
         password: inputValue2,
         role: '学生'  // 发送角色参数
       },
