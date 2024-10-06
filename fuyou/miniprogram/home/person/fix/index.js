@@ -1,3 +1,4 @@
+// 小程序端 index.js
 Page({
   data: {
     avatarUrl: '/images/wear-goggles.svg', // 默认头像路径
@@ -33,10 +34,41 @@ Page({
 
   saveProfile: function() {
     const { name, major, avatarUrl } = this.data;
-    // 在这里处理保存逻辑，如上传到服务器或存储本地
-    wx.showToast({
-      title: '保存成功',
-      icon: 'success'
+    if (!name || !major || !avatarUrl) {
+      wx.showToast({
+        title: '请填写完整的用户信息',
+        icon: 'none',
+        duration: 2000
+      });
+      return;
+    }
+    // 调用云函数保存用户信息
+    wx.cloud.callFunction({
+      name: 'saveProfile',
+      data: { name, major, avatarUrl },
+      success: res => {
+        if (res.result.success) {
+          wx.showToast({
+            title: `${res.result.message}`,
+            icon: 'success',
+            duration: 2000
+          });
+        } else {
+          wx.showToast({
+            title: `${res.result.message}`,
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      },
+      fail: err => {
+        wx.showToast({
+          title: '调用云函数失败',
+          icon: 'none',
+          duration: 2000
+        });
+        console.error('云函数调用失败：', err);
+      }
     });
   }
 });
