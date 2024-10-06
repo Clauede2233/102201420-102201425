@@ -3,7 +3,7 @@
   <view class="avatar-container">
     <image src="{{avatarUrl}}" class="avatar" bindtap="chooseAvatar"></image>
   </view>
-  <view class="name">{{name}}</view>
+  <view class="name">{{userName}}</view>
   <view class="major">{{major}}</view>
   <view class="bottum-container">
     <button bindtap="navigateToperson0"class="bottom-fix"

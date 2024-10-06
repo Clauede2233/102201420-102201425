@@ -83,7 +83,7 @@ Page({
   // 页面跳转
   navigateToLink: function() {
     wx.navigateTo({
-      url: '/pages/home/index' // 替换成您要跳转的页面路径
+      url: '/pages/log/index' // 替换成您要跳转的页面路径
     });
   }
 });

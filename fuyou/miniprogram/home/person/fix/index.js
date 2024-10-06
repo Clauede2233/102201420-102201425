@@ -53,6 +53,9 @@ Page({
             icon: 'success',
             duration: 2000
           });
+          setTimeout(() => {
+            this.navigateToperson(); // 登录成功后跳转到主页
+          }, 1000);
         } else {
           wx.showToast({
             title: `${res.result.message}`,
@@ -70,5 +73,10 @@ Page({
         console.error('云函数调用失败：', err);
       }
     });
-  }
+  },
+  navigateToperson: function() {
+    wx.navigateTo({
+      url: '/home/person/index' // 替换成您要跳转的页面路径
+    });
+  },
 });
