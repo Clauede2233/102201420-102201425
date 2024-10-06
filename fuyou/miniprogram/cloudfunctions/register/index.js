@@ -30,12 +30,15 @@ exports.main = async (event, context) => {
       return { success: false, message: '用户名已存在' };
     }
 
-    
+    const wxUserQuery = await db.collection('users').where({ _openid: userInfo }).get();
+    if (wxUserQuery.data.length > 0) {
+      return { success: false, message: '该微信用户已注册' };
+    }
 
     // 插入新用户数据
     const userResult = await db.collection('users').add({
       data: {
-        username,
+        account:username,
         password: hashedPassword,
         role,
         _openid:userInfo,
