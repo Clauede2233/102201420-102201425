@@ -1,6 +1,6 @@
 Page({
   data: {
-    username: '', // 账号
+    account: '', // 账号
     oldPassword: '', // 旧密码
     newPassword: '', // 新密码
     confirmPassword: '' // 确认新密码
@@ -8,7 +8,7 @@ Page({
 
   onUsernameInput: function(event) {
     this.setData({
-      username: event.detail.value // 更新账号
+      account: event.detail.value // 更新账号
     });
   },
 
@@ -31,10 +31,10 @@ Page({
   },
 
   updatePassword: function() {
-    const { username, oldPassword, newPassword, confirmPassword } = this.data;
+    const { account, oldPassword, newPassword, confirmPassword } = this.data;
 
     // 简单的验证
-    if (!username || !oldPassword || !newPassword || !confirmPassword) {
+    if (!account || !oldPassword || !newPassword || !confirmPassword) {
       wx.showToast({
         title: '请填写完整信息',
         icon: 'none'
@@ -54,17 +54,26 @@ Page({
     wx.cloud.callFunction({
       name: 'updatePassword', // 云函数名称
       data: {
-        username,
+        account,
         oldPassword,
         newPassword,
         confirmPassword
       },
       success: function(res) {
-        console.log('密码更新成功', res);
-        wx.showToast({
-          title: '密码更新成功',
-          icon: 'success'
-        });
+        // 根据云函数返回的数据做出反应
+        if (res.result && res.result.success) {
+          console.log('密码更新成功', res);
+          wx.showToast({
+            title: '密码更新成功',
+            icon: 'success'
+          });
+        } else {
+          // 云函数返回了错误信息
+          wx.showToast({
+            title: res.result.message || '密码更新失败',
+            icon: 'none'
+          });
+        }
       },
       fail: function(err) {
         console.error('密码更新失败', err);
