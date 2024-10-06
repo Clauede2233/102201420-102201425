@@ -1,0 +1,27 @@
+/* pages/createTeam/createTeam.wxss */
+.container {
+  position: absolute; /* 使用绝对定位 */
+  padding: 5px; /* 内边距 */
+  background-color: #f5f5f5; /* 背景色 */
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 170%;
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  left:40%;
+  background-color: #1E90FF;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}

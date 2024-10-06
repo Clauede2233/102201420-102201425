@@ -22,21 +22,19 @@
 
 .footer {
   position: absolute;
-  top: 90%;
-  display: flex;
-  align-items: center; /* 垂直居中内容 */
+  top: 92%;
+  display: flex; /* 使用 Flexbox 布局 */
   justify-content: space-between; /* 平均分配按钮之间的空间 */
-  width: 98%; /* 根据需要设置宽度 */
+  width: 100%; /* 根据需要设置宽度 */
   background-color: rgb(255, 255, 255); 
-  border: 1px solid rgb(67, 127, 187); /* 边框颜色和宽度 */
   text-align: center;
   padding: 15px 0;
 }
 
 .bottom-button {
   background-color: transparent; /* 背景透明 */
-  border: 1px solid rgb(33, 154, 187); /* 边框颜色和宽度 */
-  color: rgb(33, 154, 187); /* 字体颜色 */
+  border: 1px solid rgb(0, 0, 0); /* 边框颜色和宽度 */
+  color: rgb(0, 0, 0); /* 字体颜色 */
   padding: 5px 5px;
   border-radius: 5px; /* 圆角 */
   cursor: pointer; /* 鼠标指针样式 */

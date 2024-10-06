@@ -21,7 +21,7 @@
 }
 .footer {
   position: absolute;
-  top: 92%;
+  top: 90%;
   display: flex;
   align-items: center; /* 垂直居中内容 */
   justify-content: space-between; /* 平均分配按钮之间的空间 */

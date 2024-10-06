@@ -1,0 +1,30 @@
+<view class="container">
+  <p class="content">福友邦</p>
+  <view class="bottum-container">
+    <button bindtap="navigateTocreate"class="bottom-fix"
+    style="width: 170rpx">发布项目+</button>
+  </view>
+  <text class="title">项目列表</text>
+  <view class="project-list">
+    <block wx:for="{{projects}}" wx:key="id">
+      <view class="project-item" bindtap="viewProjectDetail" data-id="{{item._id}}">
+        <text class="project-name">{{item.projectName}}</text>
+        <text class="project-description">{{item.projectDescription}}</text>
+        <text class="project-limit">人数限制: {{item.limit}}</text>
+      </view>
+    </block>
+  <view wx:if="{{!projects.length}}">
+    <text>暂无项目发布</text>
+  </view>
+  </view>
+  <view class="footer">
+    <button bindtap="navigateToPage1" class="bottom-button" 
+    style="width: 100rpx">社区</button>
+    <button bindtap="navigateToPage2" class="bottom-button" 
+    style="width: 100rpx">项目</button>
+    <button bindtap="navigateToPage3" class="bottom-button" 
+    style="width: 100rpx">导师</button>
+    <button bindtap="navigateToPage4" class="bottom-button" 
+    style="width: 100rpx">我的</button>
+  </view>
+</view>

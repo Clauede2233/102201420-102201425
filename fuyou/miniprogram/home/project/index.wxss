@@ -10,12 +10,11 @@
   position: absolute; /* 绝对定位以覆盖在图片上 */
   display: flex;
   flex-direction: column; /* 垂直排列子元素 */
-  top: 10%;
-  left: 40%;
+  top: 5%;
   transform: translate(1%, -50%); /* 居中对齐 */
   font-family: 'Regular', sans-serif; /* 设置字体 */
   font-style: italic;
-  font-size: 70px;
+  font-size: 50px;
   color: rgb(255, 107, 107); /* 设置文本颜色 */
   text-align: center; /* 文本居中 */
 }
@@ -42,4 +41,69 @@
   cursor: pointer; /* 鼠标指针样式 */
   font-size: 10px; /* 字体大小 */
   margin: 1px; /* 按钮间的间距 */
+}
+.bottum-container {
+  position: absolute; /* 使用绝对定位 */
+  top: 15%;
+  left: 68%;
+}
+.bottom-fix {
+  background-color: rgb(228, 89, 89); /* 背景透明 */
+  border: 0px solid rgb(255, 255, 255); /* 边框颜色和宽度 */
+  color: rgb(255, 255, 255); /* 字体颜色 */
+  padding: 4px 5px;
+  border-radius: 10px; /* 圆角 */
+  cursor: pointer; /* 鼠标指针样式 */
+  font-size: 14px; /* 字体大小 */
+  margin: 1px; /* 按钮间的间距 */
+}
+.container {
+  padding: 20rpx;
+}
+
+.title {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  border: 0px solid rgb(255, 255, 255); /* 边框颜色和宽度 */
+  color: rgb(228, 83, 83); /* 字体颜色 */
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.project-list {
+  position: absolute;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-item {
+  background-color: #f8f8f8;
+  padding: 15rpx;
+  margin-bottom: 10rpx;
+  border-radius: 5rpx;
+  transition: background-color 0.3s;
+}
+
+.project-item:hover {
+  background-color: #e0e0e0;
+}
+
+.project-name {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.project-description {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 5rpx;
+}
+
+.project-limit {
+  font-size: 20rpx;
+  color: #999;
+  margin-top: 5rpx;
 }

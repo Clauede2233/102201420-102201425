@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="form">
+    <text>项目名称:</text>
+    <input type="text" placeholder="请输入项目名称" bindinput="onProjectNameInput" />
+    <text>创建者:</text>
+    <input type="text" placeholder="请输入您的账号" bindinput="onMembersInput" />
+    <text>项目最大人数:</text>
+    <input type="number" placeholder="请输入本次项目的限制人数" bindinput="onLimitInput" />
+    <text>项目简介:</text>
+    <input type="textarea" maxlength="15" placeholder="请简单介绍本次项目（15字以内）" bindinput="onProjectSimpleInput" />
+    <text>项目描述:</text>
+    <textarea placeholder="请对项目进行详细描述" bindinput="onProjectDescriptionInput"></textarea>
+    <button bindtap="createProject">创建项目</button>
+  </view>
+
+  <view class="result" wx:if="{{projectCreated}}">
+    <text>项目创建成功!</text>
+    <text>项目名称: {{projectId}}</text>
+  </view>
+</view>
