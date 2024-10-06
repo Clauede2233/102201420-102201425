@@ -1,10 +1,10 @@
 Page({
   data: {
-    projectName: '',     //项目名字
-    projectSimple:'',   //项目简介
-    projectDescription: '',//项目（详细)描述
-    members: '',        //项目创建者
-    limit: 5,           //项目初始人数限制
+    projectName: '',     // 项目名字
+    projectSimple: '',   // 项目简介
+    projectDescription: '', // 项目（详细)描述
+    members: '',        // 项目创建者
+    limit: 5,           // 项目初始人数限制
     projectCreated: false,
     projectId: '',
   },
@@ -12,12 +12,6 @@ Page({
   onProjectNameInput: function(e) {
     this.setData({
       projectName: e.detail.value
-    });
-  },
-  onLimitInput: function(e) {
-    const limit = parseInt(e.detail.value) || 0; // 确保是整数
-    this.setData({
-      limit
     });
   },
   onProjectSimpleInput: function(e) {
@@ -37,8 +31,15 @@ Page({
     });
   },
 
+  onLimitInput: function(e) {
+    const limit = parseInt(e.detail.value) || 0; // 确保是整数
+    this.setData({
+      limit
+    });
+  },
+
   createProject: function() {
-    const { projectName, projectDescription, members } = this.data;
+    const { projectName, projectSimple, projectDescription, members, limit } = this.data;
 
     if (!projectName || !projectDescription || !members) {
       wx.showToast({
@@ -53,8 +54,10 @@ Page({
       name: 'createProject', // 云函数名称
       data: {
         projectName,
+        projectSimple,
         projectDescription,
-        members: members.split(',') // 将成员ID转换为数组
+        members: members.split(','), // 将成员ID转换为数组
+        limit
       },
       success: (res) => {
         console.log('项目创建成功:', res);
