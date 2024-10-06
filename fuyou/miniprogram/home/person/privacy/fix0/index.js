@@ -8,7 +8,6 @@ Page({
     phone: '',
     signature: ''
   },
-
   onNameInput(event) {
     this.setData({ name: event.detail.value });
   },
@@ -59,8 +58,13 @@ Page({
         console.log('用户信息保存成功', res);
         wx.showToast({
           title: '提交成功',
-          icon: 'success'
+          icon: 'success',
         });
+        setTimeout(function() {  
+          wx.navigateTo({  
+            url: '/home/person/privacy/index' // 替换成您要跳转的页面路径  
+          });  
+        }, 1000);
       },
       fail: function(err) {
         console.error('保存失败', err);
@@ -70,5 +74,5 @@ Page({
         });
       }
     });
-  }
+  },
 });

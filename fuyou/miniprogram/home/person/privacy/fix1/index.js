@@ -67,6 +67,11 @@ Page({
             title: '密码更新成功',
             icon: 'success'
           });
+          setTimeout(function() {  
+            wx.navigateTo({  
+             url: '/home/person/privacy/index' // 替换成您要跳转的页面路径  
+           });  
+         }, 1000);
         } else {
           // 云函数返回了错误信息
           wx.showToast({
@@ -83,5 +88,5 @@ Page({
         });
       }
     });
-  }
+  },
 });
