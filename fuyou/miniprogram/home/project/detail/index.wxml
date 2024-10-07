@@ -8,6 +8,6 @@
   <view class="divLine2"></view>
   <text class="description">详细内容：</text>
   <textarea class="main_description"value="{{project.projectDescription}}" disabled></textarea>
-  <button class="join-button" bindtap="JoinProject">申请加入</button>
-  <button class="chat-button" bindtap="ChatProject">项目交流</button>
+  <button class="join-button" bindtap="JoinProject" data-id="{{project._id}}">申请加入</button>
+  <button class="chat-button" bindtap="ChatProject" data-id="{{project._id}}">项目交流</button>
 </view>

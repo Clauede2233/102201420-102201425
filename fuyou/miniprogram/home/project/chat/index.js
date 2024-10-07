@@ -1,6 +1,5 @@
 const app = getApp()
 const db = wx.cloud.database()
- 
 Page({
  
   /**
@@ -12,8 +11,7 @@ Page({
     mineAvatorSrc : '/images/user_male.jpg',
     himAvatorSrc : '/images/user_female.jpg',
 	},
-	
-    //获取格式化的时间 yyyy-mm-dd-hh:mm-ss
+  //获取格式化的时间 yyyy-mm-dd-hh:mm-ss
 	getFormatTime(){
 		let date = new Date();
 		let ymd = date.toISOString().substring(0,10);//年-月-日
