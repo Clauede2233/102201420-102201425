@@ -6,11 +6,14 @@
     url("//at.alicdn.com/wf/webfont/mxblSXarYhDN/cnjFbdLDEM1y.woff") format("woff");
     font-display: swap;
   }
+.container {
+  background-color: #f8dede;
+}
 .content {
   position: absolute; /* 绝对定位以覆盖在图片上 */
   display: flex;
   flex-direction: column; /* 垂直排列子元素 */
-  top: 5%;
+  top: 7%;
   transform: translate(1%, -50%); /* 居中对齐 */
   font-family: 'Regular', sans-serif; /* 设置字体 */
   font-style: italic;
@@ -18,14 +21,19 @@
   color: rgb(255, 107, 107); /* 设置文本颜色 */
   text-align: center; /* 文本居中 */
 }
-
+.background-image {
+  position:absolute;
+  width: 200%;
+  height: 100%; /* 使图片填满整个容器 */
+  opacity: 0.7; /* 设置透明度，范围从 0（完全透明）到 1（完全不透明） */
+}
 .footer {
   position: absolute;
-  top: 90%;
+  bottom: 0%;
   display: flex;
   align-items: center; /* 垂直居中内容 */
   justify-content: space-between; /* 平均分配按钮之间的空间 */
-  width: 98%; /* 根据需要设置宽度 */
+  width: 100%; /* 根据需要设置宽度 */
   background-color: rgb(255, 255, 255); 
   border: 1px solid rgb(67, 127, 187); /* 边框颜色和宽度 */
   text-align: center;
@@ -44,30 +52,27 @@
 }
 .bottum-container {
   position: absolute; /* 使用绝对定位 */
-  top: 15%;
-  left: 68%;
+  top: 18%;
+  left: 71%;
 }
 .bottom-fix {
   background-color: rgb(228, 89, 89); /* 背景透明 */
   border: 0px solid rgb(255, 255, 255); /* 边框颜色和宽度 */
   color: rgb(255, 255, 255); /* 字体颜色 */
-  padding: 4px 5px;
+  padding: 5px 4px;
   border-radius: 10px; /* 圆角 */
   cursor: pointer; /* 鼠标指针样式 */
-  font-size: 14px; /* 字体大小 */
+  font-size: 15px; /* 字体大小 */
   margin: 1px; /* 按钮间的间距 */
-}
-.container {
-  padding: 20rpx;
 }
 
 .title {
   position: absolute;
-  top: 20%;
-  left: 10%;
+  top: 22%;
+  left: 5%;
   border: 0px solid rgb(255, 255, 255); /* 边框颜色和宽度 */
   color: rgb(228, 83, 83); /* 字体颜色 */
-  font-size: 32rpx;
+  font-size: 50rpx;
   font-weight: bold;
   margin-bottom: 20rpx;
 }
@@ -75,15 +80,18 @@
 .project-list {
   position: absolute;
   top: 30%;
+  left: 0%;
   display: flex;
   flex-direction: column;
+  height: 60%;
 }
 
 .project-item {
-  background-color: #f8f8f8;
-  padding: 15rpx;
+  background-color: rgb(250, 231, 231); /* 背景透明 */
+  border: 0px solid rgb(253, 227, 227);
+  padding: 0px 10px;
   margin-bottom: 10rpx;
-  border-radius: 5rpx;
+  border-radius: 20rpx;
   transition: background-color 0.3s;
 }
 
@@ -92,25 +100,34 @@
 }
 
 .project-name {
-  font-size: 28rpx;
+  position: relative;
+  top:12px;
+  color: rgb(251, 115, 91);
+  font-size: 50rpx;
   font-weight: bold;
 }
 
-.project-description {
+.project-simple {
+  position: relative;
+  top:10px;
+  display: block;
   font-size: 24rpx;
-  color: #666;
-  margin-top: 5rpx;
+  color: rgb(49, 46, 46);
+  margin-top: 15rpx;
 }
 
 .project-limit {
+  position: relative;
+  top:10px;
+  left:10rpx;
   font-size: 20rpx;
   color: #999;
   margin-top: 5rpx;
 }
 .bottum-container2 {
-  position: absolute; /* 使用绝对定位 */
-  top: 30%;
-  left: 68%;
+  position: relative; /* 使用绝对定位 */
+  top: -30px;
+  left: 35%;
 }
 .bottom-fix2 {
   background-color: rgb(228, 89, 89); /* 背景透明 */

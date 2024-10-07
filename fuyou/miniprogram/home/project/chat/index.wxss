@@ -41,19 +41,19 @@
  
 .sv {
 	background-color: white;
-	width: 80%;
+	width: 100%;
 	height: 90vh;
 }
  
 .sendBar {
-	width: 95%;
+	width: 100%;
 	height: 10vh;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
   justify-content: center;
-  background-color: rgb(238, 204, 204);
-	border: 2px solid #f58282;
+  background-color: rgb(255, 237, 237);
+	border: 1px solid #f58282;
 }
  
 .input {

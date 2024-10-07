@@ -1,3 +1,11 @@
+App({
+  onLaunch: function () {
+    wx.cloud.init({
+      env: 'envy-1ghaz9gk4b8c5b88', // 替换为你的云环境 ID
+      traceUser: true,
+    });
+  }
+});
 Page({
   data: {
     projects: []
@@ -7,10 +15,11 @@ Page({
   },
   
   fetchProjects: function() {
+    let that = this;
     const db = wx.cloud.database(); // 初始化云数据库
-    db.collection('projects').get()
+    db.collection("projects").get()
       .then(res => {
-        console.log(res.data)
+        console.log(res)
         // 更新data中的projects数组
         this.setData({
           projects: res.data
@@ -28,7 +37,7 @@ Page({
   viewProjectDetail: function(event) {
     const projectId = event.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `/pages/projectDetail/projectDetail?id=${projectId}`
+      url: '/home/project/detail/index?id='+projectId
     });
   },
   ProjectDetail: function(event) {
