@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 const app = getApp();
 const db = wx.cloud.database();
 
+=======
+const app = getApp()
+const db = wx.cloud.database()
+>>>>>>> 4796b1e21e5a12041e0ea548d1b6535bae959289
 Page({
   data: {
+<<<<<<< HEAD
     mess: '',
     content: [], // 聊天信息
     mineAvatorSrc: '/images/user_male.jpg',
@@ -36,6 +42,24 @@ Page({
 
   // “发送”消息
   sendMess() {
+=======
+    mess : '',
+    content : [],//聊天信息
+    mineAvatorSrc : '/images/user_male.jpg',
+    himAvatorSrc : '/images/user_female.jpg',
+	},
+  //获取格式化的时间 yyyy-mm-dd-hh:mm-ss
+	getFormatTime(){
+		let date = new Date();
+		let ymd = date.toISOString().substring(0,10);//年-月-日
+		let hms = date.toTimeString().substring(0,8);//小时-分钟-秒钟
+		console.log(ymd + "-" + hms);
+		return ymd + "-" + hms;//拼接
+	},
+ 
+  //“发送”
+  sendMess(){
+>>>>>>> 4796b1e21e5a12041e0ea548d1b6535bae959289
     let that = this;
     let mess = that.data.mess;
     let date = that.getFormatTime();
