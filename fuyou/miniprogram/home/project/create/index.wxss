@@ -25,3 +25,10 @@ button {
   border: none;
   border-radius: 5px;
 }
+.result {
+  position: absolute;
+  top: 50%;
+  background-color: rgb(186, 159, 159); 
+  color: rgb(0, 0, 0); 
+  padding: 1px;
+}

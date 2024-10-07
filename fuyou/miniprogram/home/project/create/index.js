@@ -62,6 +62,14 @@ Page({
       success: (res) => {
         console.log('项目创建成功:', res);
         if (res.result.success) {
+          wx.showToast({
+            title: '创建成功',
+            icon: 'success',
+            duration: 1000
+          });
+          setTimeout(() => {
+            this.navigateToProject(); // 登录成功后跳转到主页
+          }, 1000);
           this.setData({
             projectCreated: true,
             projectId: res.result.projectId // 假设云函数返回项目ID
@@ -81,5 +89,10 @@ Page({
         });
       }
     });
-  }
+  },
+  navigateToProject: function() {
+    wx.navigateTo({
+      url: '/home/project/index' // 替换成您要跳转的页面路径
+    });
+  },
 });

@@ -12,9 +12,4 @@
     <textarea placeholder="请对项目进行详细描述" bindinput="onProjectDescriptionInput"></textarea>
     <button bindtap="createProject">创建项目</button>
   </view>
-
-  <view class="result" wx:if="{{projectCreated}}">
-    <text>项目创建成功!</text>
-    <text>项目名称: {{projectId}}</text>
-  </view>
 </view>

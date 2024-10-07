@@ -1,0 +1,157 @@
+.container {
+  position: relative; /* 为了让内容可以覆盖在图片上 */
+  display: flex;
+  background-color: #f7b2b2;
+  width: 100%;
+  height: 100vh; /* 设置高度为视口高度 */
+}
+/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+  font-family: "阿里妈妈刀隶体 Regular";
+  font-weight: 200;
+  src: url("//at.alicdn.com/wf/webfont/mxblSXarYhDN/IbEZgjUqFKY7.woff2") format("woff2"),
+  url("//at.alicdn.com/wf/webfont/mxblSXarYhDN/IxJDR0jvKFj5.woff") format("woff");
+  font-display: swap;
+}
+.content {
+  position: absolute; /* 绝对定位以覆盖在图片上 */
+  display: flex;
+  flex-direction: column; /* 垂直排列子元素 */
+  top: 5%;
+  transform: translate(1%, -50%); /* 居中对齐 */
+  font-family: 'Regular', sans-serif; /* 设置字体 */
+  font-style: italic;
+  font-size: 40px;
+  color: rgb(228, 158, 131); /* 设置文本颜色 */
+  text-align: center; /* 文本居中 */
+}
+.background-image {
+  position:absolute;
+  width: 200%;
+  height: 100%; /* 使图片填满整个容器 */
+  opacity: 0.7; /* 设置透明度，范围从 0（完全透明）到 1（完全不透明） */
+}
+.root {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+ 
+.sv {
+	background-color: white;
+	width: 80%;
+	height: 90vh;
+}
+ 
+.sendBar {
+	width: 95%;
+	height: 10vh;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+  justify-content: center;
+  background-color: rgb(238, 204, 204);
+	border: 2px solid #f58282;
+}
+ 
+.input {
+  background-color: white;
+  height: 6vh;
+  width: 70%;
+	border: 2px solid #f58282;
+}
+ 
+.box {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+ 
+.item {
+	background-color: white;
+	width: 100%;
+	min-height: 50px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+ 
+.mineText {
+	font-size: 12px;
+	color: white;
+}
+ 
+.himText {
+	font-size: 12px;
+	color: white;
+}
+ 
+.adText {
+	position: absolute;
+	margin: auto;
+	right: 20px;
+}
+ 
+.button {
+	background-color:  #f58282;
+	width: 60px;
+	height: 30px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-left: 20rpx;
+}
+ 
+.buttonText {
+	font-size: 14px;
+	color: white;
+}
+ 
+.mineAvatorSrc {
+	height: 45px;
+	width: 45px;
+  position: relative;
+  margin-left: 20rpx;
+}
+ 
+.himAvatorSrc {
+	height: 45px;
+	width: 45px;
+	position: relative;
+	right: 20rpx;
+}
+ 
+.mineTextBox {
+	background-color: #1E90FF;
+	max-width: 50%;
+	border-radius: 15rpx;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: auto;
+	margin-left: 40rpx;
+	display: block;
+	text-overflow:ellipsis;
+	word-wrap:break-word;
+}
+ 
+.himTextBox {
+	background-color: #1E90FF;
+	max-width: 50%;
+	border-radius: 15rpx;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: auto;
+	margin-right: 40rpx;
+	display: block;
+	text-overflow:ellipsis;
+	word-wrap:break-word;
+}

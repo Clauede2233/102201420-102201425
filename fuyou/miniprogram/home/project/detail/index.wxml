@@ -9,4 +9,5 @@
   <text class="description">详细内容：</text>
   <textarea class="main_description"value="正文" disabled></textarea>
   <button class="join-button" bindtap="JoinProject">申请加入</button>
+  <button class="chat-button" bindtap="ChatProject">项目交流</button>
 </view>

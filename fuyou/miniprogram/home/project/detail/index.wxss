@@ -93,3 +93,11 @@
   padding: 5px 5px; 
   border-radius: 100rpx; 
 }
+.chat-button {
+  position: absolute;
+  top: 90%;
+  background-color: #fda5a5; 
+  color: white; 
+  padding: 5px 5px; 
+  border-radius: 100rpx; 
+}

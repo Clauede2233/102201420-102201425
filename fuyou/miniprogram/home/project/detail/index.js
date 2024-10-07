@@ -5,23 +5,27 @@ Page({
     project: {}
   },
 
-  onLoad: function(options) {
-    const projectId = options.id;
-    this.fetchProjectDetail(projectId);
+  onLoad: function() {
+    this.fetchProjects(); // 页面加载时获取项目
   },
 
-  fetchProjectDetail: function(projectId) {
-    db.collection('projects').doc(projectId).get().then(res => {
-      this.setData({
-        project: res.data
+  fetchProjects: function() {
+    const db = wx.cloud.database(); // 初始化云数据库
+    db.collection('projects').get()
+      .then(res => {
+        // 更新data中的projects数组
+        this.setData({
+          projects: res.data
+        });
+        console.log('获取的项目数据:', res.data); // 打印获取的数据
+      })
+      .catch(err => {
+        console.error('获取项目失败:', err);
+        wx.showToast({
+          title: '加载项目失败',
+          icon: 'none'
+        });
       });
-    }).catch(err => {
-      console.error('获取项目详情失败:', err);
-      wx.showToast({
-        title: '加载项目详情失败',
-        icon: 'none'
-      });
-    });
   },
   JoinProject: function() {
     // 这里可以添加申请逻辑，例如调用云函数或API
@@ -48,5 +52,10 @@ Page({
         });
       }
     });
-  }
+  },
+  ChatProject: function() {
+    wx.navigateTo({
+      url: '/home/project/chat/index' // 替换成您要跳转的页面路径
+    });
+  },
 });
