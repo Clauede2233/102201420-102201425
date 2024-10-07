@@ -30,7 +30,7 @@ Page({
   JoinProject: function() {
     // 这里可以添加申请逻辑，例如调用云函数或API
     wx.cloud.callFunction({
-      name: 'JoinProject', // 云函数名
+      name: 'joinproject _id', // 云函数名
       data: { /* 可以传递一些数据 */ },
       success: res => {
         // 处理成功后的逻辑，比如更新outputText
