@@ -38,75 +38,76 @@ Page({
     return ymd + " " + hms; // 拼接
   },
 
-  // “发送”
-  sendMess() {
-    let that = this;
-    let mess = that.data.mess;
-    let date = that.getFormatTime();
-    wx.showLoading({
-      title: '发送中...',
-    });
-    // 查询是否存在聊天记录
-    db.collection('chatRecords').where({
-      projectId: that.data.projectId
-    }).get({
-      success: function(res) {
-        if (res.data.length > 0) {
-          // 如果存在聊天记录，更新该记录
-          let recordId = res.data[0]._id;
-          let newMessage = {
-            id: 0, // 用户自己发送，为0
-            text: mess,
-            date: date
-          };
-          db.collection('chatRecords').doc(recordId).update({
-            data: {
-              chatContent: db.command.push(newMessage)
-            },
-            success: function(updateRes) {
-              console.log("消息更新成功！", updateRes);
-              that.setData({
-                mess: '',
-                content: that.data.content.concat(newMessage) // 将新发送的消息添加到聊天内容中
-              });
-            },
-            fail: function(err) {
-              console.log("消息更新失败！", err);
-            },
-            complete: function() {
-              wx.hideLoading();
-            }
+// “发送”
+sendMess() {
+  let that = this;
+  let mess = that.data.mess;
+  let date = that.getFormatTime();
+  wx.showLoading({ title: '发送中...', mask: true });
+
+  // 查询是否存在聊天记录
+  db.collection('chatRecords').where({
+    projectId: that.data.projectId
+  }).get().then(res => {
+    if (res.data.length > 0) {
+      // 如果存在聊天记录，更新该记录
+      let recordId = res.data[0]._id;
+      let newMessage = {
+        id: 0, // 用户自己发送，为0
+        text: mess,
+        date: date
+      };
+      db.collection('chatRecords').doc(recordId).update({
+        data: {
+          chatContent: db.command.push(newMessage)
+        },
+        success: function(updateRes) {
+          console.log("消息更新成功！", updateRes);
+          that.setData({
+            mess: '',
+            content: that.data.content.concat(newMessage) // 将新发送的消息添加到聊天内容中
           });
-        } else {
-          // 如果不存在聊天记录，创建新的记录
-          db.collection('chatRecords').add({
-            data: {
-              projectId: that.data.projectId,
-              chatContent: [mess],
-              createTime: db.serverDate()
-            },
-            success: function(addRes) {
-              console.log("新建聊天记录成功！", addRes);
-              that.setData({
-                mess: '',
-                content: [mess]
-              });
-            },
-            fail: function(err) {
-              console.log("新建聊天记录失败！", err);
-            },
-            complete: function() {
-              wx.hideLoading();
-            }
-          });
+        },
+        fail: function(err) {
+          console.log("消息更新失败！", err);
+        },
+        complete: function() {
+          wx.hideLoading();
         }
-      },
-      fail: function(err) {
-        console.log("查询聊天记录失败！", err);
-        wx.hideLoading();
-      }
-    });
-  },
+      });
+    } else {
+      // 如果不存在聊天记录，创建新的记录
+      let newMessage = {
+        id: 0,
+        text: mess,
+        date: date
+      };
+      db.collection('chatRecords').add({
+        data: {
+          projectId: that.data.projectId,
+          chatContent: [newMessage],
+          createTime: db.serverDate()
+        },
+        success: function(addRes) {
+          console.log("新建聊天记录成功！", addRes);
+          that.setData({
+            mess: '',
+            content: [newMessage]
+          });
+        },
+        fail: function(err) {
+          console.log("新建聊天记录失败！", err);
+        },
+        complete: function() {
+          wx.hideLoading();
+        }
+      });
+    }
+  }).catch(err => {
+    console.log("查询聊天记录失败！", err);
+    wx.hideLoading();
+  });
+},
 
   // 查询聊天
   queryChat() {
@@ -179,7 +180,6 @@ Page({
           });
         }
       },
-      
       onError: function(err) {
         console.error(err);
       }
