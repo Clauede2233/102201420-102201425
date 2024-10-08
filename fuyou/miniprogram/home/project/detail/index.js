@@ -64,7 +64,7 @@ Page({
     const { account } = this.data; // 获取当前的 account 值
     console.log(this.data.account)
     wx.cloud.callFunction({
-      name: 'joinproject_id', // 云函数名
+      name: 'joinprojectrequest_id', // 云函数名
       data: { projectId, account },
       success: res => {
         // 处理成功后的逻辑，比如更新 outputText

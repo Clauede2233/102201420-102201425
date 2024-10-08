@@ -20,8 +20,9 @@ exports.main = async (event, context) => {
     }
 
     const project = result.data; // 获取项目详情
-    const { members, limit } = project; // 获取成员列表和限制
+    const { members, applicants, limit } = project; // 获取成员列表、申请列表和限制
 
+    // 检查项目成员是否已满
     if (members.length >= limit) {
       return {
         success: false,
@@ -29,6 +30,7 @@ exports.main = async (event, context) => {
       };
     }
 
+    // 检查账号是否已经在项目成员列表中
     if (members.includes(account)) {
       return {
         success: false,
@@ -36,17 +38,36 @@ exports.main = async (event, context) => {
       };
     }
 
+    // 检查账号是否在申请列表中
+    const applicantSet = new Set(applicants); // 将数组转换为 Set
+    if (!applicantSet.has(account)) { // 使用 has 方法检查账号是否存在
+      return {
+        success: false,
+        message: '账号不在申请列表中'
+      };
+    }
+
+    // 从申请列表中移除账号
+    const updatedApplicants = applicants.filter(applicant => applicant !== account);
+
     // 添加账号到项目成员列表
     const updateResult = await projectCollection.doc(_id).update({
       data: {
-        members: db.command.push(account) // 使用 push 操作符来添加成员
+        members: db.command.push(account), // 使用 push 操作符来添加成员
+        applicants: db.command.pull(account) // 使用 pull 操作符来移除申请者
       }
     });
 
+    if (updateResult.updated === 0) {
+      return {
+        success: false,
+        message: '更新项目信息失败，可能是因为没有实际更新'
+      };
+    }
+
     return {
       success: true,
-      message: '申请加入项目成功',
-      data: updateResult
+      message: '成功加入项目成员列表并从申请列表中移除'
     };
   } catch (e) {
     console.error(e);
