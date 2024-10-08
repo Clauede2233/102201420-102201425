@@ -90,7 +90,7 @@ Page({
   ChatProject: function(event) {
     const projectId = event.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/home/project/chat/index?id='+projectId // 替换成您要跳转的页面路径
+      url: '/home/project/chat/index?projectId=' + projectId// 替换成您要跳转的页面路径
     });
   },
 });
