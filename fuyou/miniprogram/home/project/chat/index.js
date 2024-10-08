@@ -139,14 +139,6 @@ Page({
     });
   },
 
-  // 页面加载时查询聊天
-  onLoad: function(options) {
-    // 从页面跳转过来的projectId
-    this.setData({
-      projectId: options.projectId || '',
-    });
-    this.queryChat(); // 查询聊天
-  },
 
   // 页面准备完毕时
   onReady: function() {
