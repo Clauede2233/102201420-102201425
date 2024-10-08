@@ -33,7 +33,7 @@ Page({
       success: (res) => {},
       fail: (res) => {},
       complete: (res) => {
-        db.collection('chatTest')
+        db.collection('chatRecords')
         .doc(id)
         .update({
           data : {
@@ -74,7 +74,7 @@ Page({
 	  success: (res) => {},
 	  fail: (res) => {},
 	  complete: (res) => {
-		  db.collection('chatTest')
+		  db.collection('chatRecords')
 		  .add({
 			  data : {
 				  chatContent : [],//设置一个空的聊天循环体
@@ -110,7 +110,7 @@ Page({
       success: (res) => {},
       fail: (res) => {},
       complete: (res) => {
-        db.collection('chatTest')
+        db.collection('chatRecords')
         //.doc('4efa204964219ab20003873513331ef9')
         .get({
           success:function(res){
