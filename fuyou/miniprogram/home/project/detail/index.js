@@ -41,10 +41,6 @@ Page({
 
     // 调用云函数以获取用户信息
     wx.cloud.callFunction({
-<<<<<<< HEAD
-      name: 'joinproject_id', // 云函数名
-      data: { /* 可以传递一些数据 */ },
-=======
       name: 'getprofile', // 替换为你的云函数名称  
       success: res => {  
         // 假设云函数返回的数据结构为 { success: true, data: { account: '...' } }  
@@ -70,7 +66,6 @@ Page({
     wx.cloud.callFunction({
       name: 'joinproject_id', // 云函数名
       data: { projectId, account },
->>>>>>> 4796b1e21e5a12041e0ea548d1b6535bae959289
       success: res => {
         // 处理成功后的逻辑，比如更新 outputText
         this.setData({
@@ -95,11 +90,7 @@ Page({
   ChatProject: function(event) {
     const projectId = event.currentTarget.dataset.id;
     wx.navigateTo({
-<<<<<<< HEAD
       url: '/home/project/chat/index?projectId=' + projectId// 替换成您要跳转的页面路径
-=======
-      url: '/home/project/chat/index?id='+projectId // 替换成您要跳转的页面路径
->>>>>>> 4796b1e21e5a12041e0ea548d1b6535bae959289
     });
   },
 });

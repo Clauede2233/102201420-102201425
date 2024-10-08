@@ -1,20 +1,17 @@
-<<<<<<< HEAD
-const app = getApp();
-const db = wx.cloud.database();
-
-=======
 const app = getApp()
 const db = wx.cloud.database()
->>>>>>> 4796b1e21e5a12041e0ea548d1b6535bae959289
+
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-<<<<<<< HEAD
     mess: '',
     content: [], // 聊天信息
     mineAvatorSrc: '/images/user_male.jpg',
     himAvatorSrc: '/images/user_female.jpg',
-    projectId: '', // 存储项目 _id
-    toBottom: '',
+    projectId: '' // 用于存储传来的projectId
   },
   onLoad: function (options) {
     // 从 onLoad 的 options 参数中获取 _id
@@ -31,8 +28,9 @@ Page({
         icon: 'none',
       });
     }
+    console.log(this.data.projectId);
   },
-  // 获取格式化的时间 yyyy-mm-dd-hh:mm-ss
+  // 获取格式化的时间 yyyy-mm-dd hh:mm:ss
   getFormatTime() {
     let date = new Date();
     let ymd = date.toISOString().substring(0, 10); // 年-月-日
@@ -40,59 +38,71 @@ Page({
     return ymd + " " + hms; // 拼接
   },
 
-  // “发送”消息
+  // “发送”
   sendMess() {
-=======
-    mess : '',
-    content : [],//聊天信息
-    mineAvatorSrc : '/images/user_male.jpg',
-    himAvatorSrc : '/images/user_female.jpg',
-	},
-  //获取格式化的时间 yyyy-mm-dd-hh:mm-ss
-	getFormatTime(){
-		let date = new Date();
-		let ymd = date.toISOString().substring(0,10);//年-月-日
-		let hms = date.toTimeString().substring(0,8);//小时-分钟-秒钟
-		console.log(ymd + "-" + hms);
-		return ymd + "-" + hms;//拼接
-	},
- 
-  //“发送”
-  sendMess(){
->>>>>>> 4796b1e21e5a12041e0ea548d1b6535bae959289
     let that = this;
     let mess = that.data.mess;
     let date = that.getFormatTime();
-
     wx.showLoading({
       title: '发送中...',
-      mask: true,
     });
-
-    wx.cloud.callFunction({
-      name: 'sendChatMessage',
-      data: {
-        projectId,
-        mess: mess,
-        date: date
+    // 查询是否存在聊天记录
+    db.collection('chatRecords').where({
+      projectId: that.data.projectId
+    }).get({
+      success: function(res) {
+        if (res.data.length > 0) {
+          // 如果存在聊天记录，更新该记录
+          let recordId = res.data[0]._id;
+          let newMessage = {
+            id: 0, // 用户自己发送，为0
+            text: mess,
+            date: date
+          };
+          db.collection('chatRecords').doc(recordId).update({
+            data: {
+              chatContent: db.command.push(newMessage)
+            },
+            success: function(updateRes) {
+              console.log("消息更新成功！", updateRes);
+              that.setData({
+                mess: '',
+                content: that.data.content.concat(newMessage) // 将新发送的消息添加到聊天内容中
+              });
+            },
+            fail: function(err) {
+              console.log("消息更新失败！", err);
+            },
+            complete: function() {
+              wx.hideLoading();
+            }
+          });
+        } else {
+          // 如果不存在聊天记录，创建新的记录
+          db.collection('chatRecords').add({
+            data: {
+              projectId: that.data.projectId,
+              chatContent: [mess],
+              createTime: db.serverDate()
+            },
+            success: function(addRes) {
+              console.log("新建聊天记录成功！", addRes);
+              that.setData({
+                mess: '',
+                content: [mess]
+              });
+            },
+            fail: function(err) {
+              console.log("新建聊天记录失败！", err);
+            },
+            complete: function() {
+              wx.hideLoading();
+            }
+          });
+        }
       },
-      success: function (res) {
-        that.setData({
-          mess: '',
-          content: that.data.content.concat(res.result.data)
-        });
-        that.setData({
-          toBottom: `item${that.data.content.length - 1}`,
-        });
-      },
-      fail: function (err) {
-        console.error("发送失败！", err);
-        wx.showToast({
-          title: '发送失败',
-          icon: 'none',
-        });
-      },
-      complete: function () {
+      fail: function(err) {
+        console.log("查询聊天记录失败！", err);
         wx.hideLoading();
       }
     });
@@ -102,64 +112,77 @@ Page({
   queryChat() {
     let that = this;
     wx.showLoading({
-      title: '查询中...',
-      mask: true,
+      title: '加载中...',
     });
-
-    wx.cloud.callFunction({
-      name: 'queryChat',
-      data: { projectId: that.data.projectId },
-      success: function (res) {
-        that.setData({
-          content: res.result.data.chatContent
-        });
-        that.setData({
-          toBottom: `item${that.data.content.length - 1}`,
-        });
+    db.collection('chatRecords').where({
+      projectId: that.data.projectId
+    }).get({
+      success: function(res) {
+        console.log("查询成功！", res);
+        if (res.data.length > 0) {
+          that.setData({
+            content: res.data[0].chatContent
+          });
+        } else {
+          // 如果没有聊天记录，初始化为空数组
+          that.setData({
+            content: []
+          });
+        }
       },
-      fail: function (err) {
-        console.error("查询失败！", err);
-        wx.showToast({
-          title: '查询失败',
-          icon: 'none',
-        });
+      fail: function(err) {
+        console.log("查询失败！", err);
       },
-      complete: function () {
+      complete: function() {
         wx.hideLoading();
       }
     });
   },
 
-  // 监听页面触摸滚动
-  onScroll: function (e) {
+  // 页面加载时查询聊天
+  onLoad: function(options) {
+    // 从页面跳转过来的projectId
     this.setData({
-      toBottom: '',
+      projectId: options.projectId || '',
     });
+    this.queryChat(); // 查询聊天
+  },
+
+  // 页面准备完毕时
+  onReady: function() {
+    // 设置数据库监听器
+    this.dbWatcher();
   },
 
   // 数据库的监听器
   dbWatcher() {
     let that = this;
+    // 监听聊天记录集合的变化
     db.collection('chatRecords').where({
-      _id: this.data.projectId
+      projectId: that.data.projectId
     }).watch({
-      onChange: function (res) {
+      onChange: function(res) {
+        // 监控数据发生变化时触发
         if (res.docChanges) {
-          that.setData({
-            content: res.docChanges[0].doc.chatContent
-          });
-          that.setData({
-            toBottom: `item${that.data.content.length - 1}`,
+          res.docChanges.forEach(function(change) {
+            if (change.dataType === "update") { // 数据库监听到的内容更新
+              let updatedContent = change.doc.chatContent;
+              let newContent = that.data.content.concat(updatedContent);
+              that.setData({
+                content: newContent
+              });
+              // 定位到最后一行
+              that.setData({
+                toBottom: `item${that.data.content.length - 1}`,
+              });
+            }
           });
         }
       },
-      onError: function (err) {
+      onError: function(err) {
         console.error(err);
       }
     });
   },
 
-  onReady: function () {
-    this.dbWatcher();
-  }
 });
