@@ -82,12 +82,12 @@
  
 .mineText {
 	font-size: 12px;
-	color: white;
+	color: rgb(255, 255, 255);
 }
  
 .himText {
 	font-size: 12px;
-	color: white;
+	color: rgb(0, 0, 0);
 }
  
 .adText {
@@ -112,22 +112,22 @@
 	color: white;
 }
  
-.mineAvatorSrc {
+.himAvatorSrc {
 	height: 45px;
 	width: 45px;
   position: relative;
   margin-left: 20rpx;
 }
  
-.himAvatorSrc {
+.mineAvatorSrc {
 	height: 45px;
 	width: 45px;
 	position: relative;
 	right: 20rpx;
 }
  
-.mineTextBox {
-	background-color: #1E90FF;
+.himTextBox {
+	background-color: #ffffff;
 	max-width: 50%;
 	border-radius: 15rpx;
 	padding-left: 5px;
@@ -141,7 +141,7 @@
 	word-wrap:break-word;
 }
  
-.himTextBox {
+.mineTextBox {
 	background-color: #1E90FF;
 	max-width: 50%;
 	border-radius: 15rpx;
