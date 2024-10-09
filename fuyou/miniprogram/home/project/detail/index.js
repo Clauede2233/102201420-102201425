@@ -38,7 +38,7 @@ Page({
 
   JoinProject: function(event) {
     const projectId = event.currentTarget.dataset.id;
-
+    
     // 调用云函数以获取用户信息
     wx.cloud.callFunction({
       name: 'getprofile', // 替换为你的云函数名称  
@@ -63,6 +63,7 @@ Page({
   applyToJoinProject: function(projectId) {
     const { account } = this.data; // 获取当前的 account 值
     console.log(this.data.account)
+    console.log(projectId);
     wx.cloud.callFunction({
       name: 'joinprojectrequest_id', // 云函数名
       data: { projectId, account },
