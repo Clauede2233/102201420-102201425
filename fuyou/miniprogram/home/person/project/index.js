@@ -8,12 +8,29 @@ App({
 });
 Page({
   data: {
+    userid:'',
     projects: []
   },
   onLoad: function() {
     this.fetchProjects(); // 页面加载时获取项目
+    wx.cloud.callFunction({
+      name: 'getprofile', //获取用户信息  
+      success: res => {   
+        if (res.result.success) {  
+          this.setData({  
+            userid: res.result.data._id, //获取用户ID  
+            avatarUrl:res.result.data.avatarUrl,//获取用户头像
+          });  
+          console.log(this.data.userid)
+        } else {  
+          console.error('获取用户信息失败:', res.result.message);  
+        }  
+      },  
+      fail: err => {  
+        console.error('调用云函数失败:', err);  
+      } 
+    });
   },
-  
   fetchProjects: function() {
     let that = this;
     const db = wx.cloud.database(); // 初始化云数据库

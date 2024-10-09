@@ -80,6 +80,16 @@
 	flex-direction: row;
 	align-items: center;
 }
+
+.item1 {
+	justify-content: left;
+	background-color: white;
+	width: 100%;
+	min-height: 50px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
  
 .mineText {
 	font-size: 12px;
@@ -117,20 +127,20 @@
 	height: 45px;
 	width: 45px;
 	position: relative;
-	margin-right: 20rpx;
+	margin-left: 20rpx;
 }
  
 
 .mineAvatorSrc {
 	height: 45px;
 	width: 45px;
-  position: relative;
-  margin-right: 20rpx;
+  	position: relative;
+  	margin-right: 20rpx;
 }
 
  
 .himTextBox {
-	background-color: #ffffff;
+	background-color: #e2e0e0;
 	max-width: 50%;
 	border-radius: 15rpx;
 	padding-left: 5px;

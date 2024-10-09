@@ -57,7 +57,7 @@ Page({
               projectName,
               projectSimple,
               projectDescription,
-              members:res.result.data.account.split(','), // 使用获取的用户账号
+              members:res.result.data.name.split(','), // 使用获取的用户账号
               membersid:res.result.data._id.split(','),// 使用获取的用户id
               limit
             },

@@ -9,11 +9,11 @@
 				<image src="{{item.avatarUrl}}" class="mineAvatorSrc"></image>
 			</view>
  
-			<view class="item" wx:if="{{item.id != userid}}">
+			<view class="item1" wx:if="{{item.id != userid}}">
+				<image src="{{item.avatarUrl}}" class="himAvatorSrc"></image>
 				<view class="himTextBox">
 					<text class="himText">{{item.text}}</text>
 				</view>
-				<image src="{{item.avatarUrl}}" class="himAvatorSrc"></image>
 			</view>
 		</view>
  

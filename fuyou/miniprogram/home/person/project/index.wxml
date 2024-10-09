@@ -2,7 +2,7 @@
   <image class="background-image" src="/images/pink0.jpg" mode="aspectFill"></image>
   <text class="title">我的项目:</text>
   <scroll-view class="project-list"scroll-y="true">
-    <block wx:for="{{projects}}" wx:key="id">
+    <block wx:for="{{projects}}" wx:key="id" wx:if="{{item.membersid == userid}}">
       <view class="project-item" bindtap="viewProjectDetail" data-id="{{item._id}}">
         <text class="project-name">{{item.projectName}}</text>
         <text class="project-limit">人数限制: {{item.limit}}</text>

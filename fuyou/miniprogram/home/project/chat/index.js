@@ -36,11 +36,11 @@ Page({
         console.error('调用云函数失败:', err);  
       } 
     });
-    console.log(this.data.projectId)
     if (projectId) {
       this.setData({
         projectId: projectId
       });
+	    this.dbWatcher();
       this.queryChat(projectId);
     } else {
       console.error("未接收到项目ID");
@@ -74,7 +74,6 @@ sendMess() {
   // 查询是否存在聊天记录
   db.collection('chatRecords').where({
     projectId: that.data.projectId,
-    userid: that.data.id
   }).get().then(res => {
     if (res.data.length > 0) {
       // 如果存在聊天记录，更新该记录
@@ -85,6 +84,7 @@ sendMess() {
         text: mess,
         date: date,
       };
+      console.log(recordId)
       db.collection('chatRecords').doc(recordId).update({
         data: {
           chatContent: db.command.push(newMessage)
@@ -177,32 +177,32 @@ sendMess() {
 
   // 页面准备完毕时
   onReady: function() {
-    // 设置数据库监听器
-    this.dbWatcher();
   },
 
   // 数据库的监听器
-  dbWatcher() {
-    let that = this;
-    // 监听聊天记录集合的变化
-    db.collection('chatRecords').where({
-      projectId: that.data.projectId
+  dbWatcher() {  
+    let that = this;  
+    db.collection('chatRecords').where({  
+        projectId: that.data.projectId,  
     }).watch({
-      onChange: function(res) {
-        // 监控数据发生变化时触发
-        if (res.docChanges) {
-          res.docChanges.forEach(function(change) {
-            if (change.dataType === "update") { // 数据库监听到的内容更新
-              let updatedContent = change.doc.chatContent;
-              let newContent = that.data.content.concat(updatedContent);
-            }
-          });
+      onChange: function (res) {
+        //监控数据发生变化时触发
+      console.log("res:",res);
+      if(res.docChanges != null){
+        if(res.docChanges[0].dataType == "update"){//数据库监听到的内容
+          let length = res.docChanges[0].doc.chatContent.length;
+          let value = res.docChanges[0].doc.chatContent[length - 1];//要增添的内容
+          console.log("value : ",value);
+          //定位到最后一行
+          that.setData({
+            toBottom : `item${that.data.content.length - 1}`,
+          })
         }
-      },
-      onError: function(err) {
-        console.error(err);
       }
-    });
-  },
-
+        },
+        onError:(err) => {
+          console.error(err)
+        }
+      })
+}
 });
