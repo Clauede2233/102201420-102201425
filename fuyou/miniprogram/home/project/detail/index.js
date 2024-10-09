@@ -62,21 +62,34 @@ Page({
   },
   applyToJoinProject: function(projectId) {
     const { account } = this.data; // 获取当前的 account 值
-    console.log(this.data.account)
+    console.log(this.data.account);
     console.log(projectId);
     wx.cloud.callFunction({
       name: 'joinprojectrequest_id', // 云函数名
       data: { projectId, account },
       success: res => {
         // 处理成功后的逻辑，比如更新 outputText
-        this.setData({
-          outputText: '申请已提交！'
-        });
-        wx.showToast({
-          title: '申请已提交',
-          icon: 'success',
-          duration: 2000
-        });
+        // 假设云函数返回的数据结构是 { success: true/false, message: '描述信息' }
+        const { success, message } = res.result;
+        if (success) {
+          // 申请成功的逻辑
+          this.setData({
+            outputText: '申请已提交！'
+          });
+          wx.showToast({
+            title: '申请成功',
+            icon: 'success',
+            duration: 2000
+          });
+        } else {
+          // 申请失败的逻辑，但云函数给出了具体原因
+          console.error('申请失败:', message);
+          wx.showToast({
+            title: message || '申请失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
       },
       fail: err => {
         console.error('申请失败:', err);
