@@ -40,7 +40,7 @@ Page({
       this.setData({
         projectId: projectId
       });
-	    this.dbWatcher();
+	    this.dbWatcher();                  //调用监听函数
       this.queryChat(projectId);
     } else {
       console.error("未接收到项目ID");
@@ -92,11 +92,7 @@ sendMess() {
         success: function(updateRes) {
           console.log("消息更新成功！", updateRes);
           that.setData({
-            mess: '',
-            content: that.data.content.concat(newMessage) // 将新发送的消息添加到聊天内容中
-          });
-          that.setData({         
-            toBottom: `item${that.data.content.length - 1}`,//滚动到底部
+            mess: '',// 将新发送的消息添加到聊天内容中
           });
         },
         
@@ -158,6 +154,9 @@ sendMess() {
           that.setData({
             content: res.data[0].chatContent   //每次刷新都会变化
           });
+          that.setData({
+            toBottom : `item${that.data.content.length - 1}`,
+          })
         } else {
           // 如果没有聊天记录，初始化为空数组
           that.setData({
@@ -183,7 +182,7 @@ sendMess() {
   dbWatcher() {  
     let that = this;  
     db.collection('chatRecords').where({  
-        projectId: that.data.projectId,  
+        projectId: that.data.projectId,
     }).watch({
       onChange: function (res) {
         //监控数据发生变化时触发
@@ -191,18 +190,22 @@ sendMess() {
       if(res.docChanges != null){
         if(res.docChanges[0].dataType == "update"){//数据库监听到的内容
           let length = res.docChanges[0].doc.chatContent.length;
+          console.log("length : ",length);
           let value = res.docChanges[0].doc.chatContent[length - 1];//要增添的内容
           console.log("value : ",value);
+          that.setData({
+            content: that.data.content.concat(value)   //每次刷新都会变化
+          });
           //定位到最后一行
           that.setData({
             toBottom : `item${that.data.content.length - 1}`,
           })
         }
       }
-        },
-        onError:(err) => {
-          console.error(err)
-        }
-      })
-}
+      },
+      onError:(err) => {
+        console.error(err)
+      }
+    })
+  },
 });
