@@ -9,19 +9,21 @@ App({
 Page({
   data: {
     userid:'',
-    projects: []
+    projects: [],
   },
   onLoad: function() {
-    this.fetchProjects(); // 页面加载时获取项目
     wx.cloud.callFunction({
-      name: 'getprofile', //获取用户信息  
+      name: 'getprofile', // 获取用户信息  
       success: res => {   
         if (res.result.success) {  
           this.setData({  
-            userid: res.result.data._id, //获取用户ID  
-            avatarUrl:res.result.data.avatarUrl,//获取用户头像
-          });  
-          console.log(this.data.userid)
+            userid: res.result.data._id, // 获取用户ID  
+            avatarUrl: res.result.data.avatarUrl // 获取用户头像
+          }, () => {
+            // 在 setData 完成后打印 userid
+            console.log(this.data.userid);
+            this.fetchProjects(); // 确保在获取用户ID后再获取项目
+          });
         } else {  
           console.error('获取用户信息失败:', res.result.message);  
         }  
@@ -31,17 +33,20 @@ Page({
       } 
     });
   },
+
   fetchProjects: function() {
     let that = this;
     const db = wx.cloud.database(); // 初始化云数据库
     db.collection("projects").get()
       .then(res => {
-        console.log(res)
+        console.log(res);
         // 更新data中的projects数组
         this.setData({
-          projects: res.data
+          projects: res.data,
+        }, () => {
+          console.log('Projects after setData:', this.data.projects); // 输出更新后的项目数据
+          console.log('UserID after fetching projects:', this.data.userid); // 再次输出用户ID
         });
-        console.log('获取的项目数据:', res.data); // 打印获取的数据
       })
       .catch(err => {
         console.error('获取项目失败:', err);

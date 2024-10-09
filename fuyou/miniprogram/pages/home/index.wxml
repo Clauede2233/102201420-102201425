@@ -1,13 +1,10 @@
 <view class="container">
-    <p class="content">福友邦</p>
+  <image class="background-image" src="/images/pink5.jpg" mode="aspectFill"></image>
+  <p class="content">欢迎你</p>
   <view class="footer">
-    <button bindtap="navigateToPage1" class="bottom-button" 
-    style="width: 100rpx">社区</button>
     <button bindtap="navigateToPage2" class="bottom-button" 
-    style="width: 100rpx">项目</button>
-    <button bindtap="navigateToPage3" class="bottom-button" 
-    style="width: 100rpx">导师</button>
+    style="width: 200rpx">项目</button>
     <button bindtap="navigateToPage4" class="bottom-button" 
-    style="width: 100rpx">我的</button>
+    style="width: 200rpx">我的</button>
   </view>
 </view>

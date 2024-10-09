@@ -25,6 +25,27 @@ Page({
         console.error('调用云函数失败:', err);  
       }  
     });  
+    this.fetchProjects();
+  },
+  fetchProjects: function() {
+    let that = this;
+    const db = wx.cloud.database(); // 初始化云数据库
+    db.collection("projects").get()
+      .then(res => {
+        console.log(res)
+        // 更新data中的projects数组
+        this.setData({
+          projects: res.data
+        });
+        console.log('获取的项目数据:', res.data); // 打印获取的数据
+      })
+      .catch(err => {
+        console.error('获取项目失败:', err);
+        wx.showToast({
+          title: '加载项目失败',
+          icon: 'none'
+        });
+      });
   },
   navigateToperson0: function() {
     wx.navigateTo({
