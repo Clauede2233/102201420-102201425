@@ -5,7 +5,7 @@ cloud.init();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const { projectName, projectSimple, projectDescription, members,membersid,limit } = event;
+  const { projectName, projectSimple, projectDescription, members,membersid,name,limit } = event;
   const db = cloud.database();
   const projectCollection = db.collection('projects');
 
@@ -17,6 +17,7 @@ exports.main = async (event, context) => {
       projectDescription,
       members,
       membersid,
+      name,
       limit,
       createdAt: db.serverDate(), // 使用服务器时间
     };

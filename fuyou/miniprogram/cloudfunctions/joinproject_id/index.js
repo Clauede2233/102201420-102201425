@@ -5,7 +5,7 @@ cloud.init();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const { _id, account } = event; // 获取项目ID和账号信息
+  const { _id, account ,name} = event; // 获取项目ID和账号信息
   const db = cloud.database();
   const projectCollection = db.collection('projects');
 
@@ -54,7 +54,8 @@ exports.main = async (event, context) => {
     const updateResult = await projectCollection.doc(_id).update({
       data: {
         members: db.command.push(account), // 使用 push 操作符来添加成员
-        applicants: db.command.pull(account) // 使用 pull 操作符来移除申请者
+        applicants: db.command.pull(account), // 使用 pull 操作符来移除申请者
+        name: db.command.push(name)
       }
     });
 
