@@ -1,4 +1,3 @@
-// 小程序端 index.js
 Page({
   data: {
     avatarUrl: '/images/wear-goggles.svg', // 默认头像路径
@@ -13,9 +12,30 @@ Page({
       sourceType: ['album', 'camera'], // 可以从相册或相机选择
       success(res) {
         const tempFilePath = res.tempFilePaths[0];
+        that.uploadAvatar(tempFilePath); // 上传图片
+      }
+    });
+  },
+
+  uploadAvatar: function(tempFilePath) {
+    const that = this;
+    const cloudPath = `my-avatar-${Date.now()}.png`; // 云存储路径
+    wx.cloud.uploadFile({
+      cloudPath: cloudPath,
+      filePath: tempFilePath,
+      success: res => {
+        console.log('上传成功', res);
         that.setData({
-          avatarUrl: tempFilePath // 更新头像路径
+          avatarUrl: res.fileID // 更新头像路径为云存储文件ID
         });
+      },
+      fail: err => {
+        wx.showToast({
+          title: '图片上传失败',
+          icon: 'none',
+          duration: 2000
+        });
+        console.error('图片上传失败：', err);
       }
     });
   },
@@ -74,6 +94,7 @@ Page({
       }
     });
   },
+
   navigateToperson: function() {
     wx.navigateTo({
       url: '/home/person/index' // 替换成您要跳转的页面路径
