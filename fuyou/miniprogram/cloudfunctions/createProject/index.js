@@ -1,12 +1,12 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk');
-const bcrypt = require('bcryptjs'); // 用于密码加密
 
 cloud.init();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const { projectName, projectSimple, projectDescription, members, limit } = event;
+  const { projectName, projectSimple, projectDescription, members,membersid,limit } = event;
+  const application=0;
   const db = cloud.database();
   const projectCollection = db.collection('projects');
 
@@ -17,8 +17,10 @@ exports.main = async (event, context) => {
       projectSimple,
       projectDescription,
       members,
+      membersid,
       limit,
-      createdAt: db.serverDate() // 使用服务器时间
+      createdAt: db.serverDate(), // 使用服务器时间
+      applicatants:0
     };
 
     const result = await projectCollection.add({

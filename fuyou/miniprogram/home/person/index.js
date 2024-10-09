@@ -36,6 +36,11 @@ Page({
       url: '/home/person/privacy/index' // 替换为目标页面的路径
     });
   },
+  navigateToperson3: function() {
+    wx.navigateTo({
+      url: '/home/person/project/index' // 替换为目标页面的路径
+    });
+  },
   navigateToPage1: function() {
     wx.navigateTo({
       url: '/home/community/index' // 替换为目标页面的路径

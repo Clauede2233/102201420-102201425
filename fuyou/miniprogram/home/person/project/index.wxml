@@ -1,11 +1,6 @@
 <view class="container">
   <image class="background-image" src="/images/pink0.jpg" mode="aspectFill"></image>
-  <p class="content">福友邦</p>
-  <view class="bottum-container">
-    <button bindtap="navigateTocreate"class="bottom-fix"
-    style="width: 170rpx">发布项目+</button>
-  </view>
-  <text class="title">热门项目</text>
+  <text class="title">我的项目:</text>
   <scroll-view class="project-list"scroll-y="true">
     <block wx:for="{{projects}}" wx:key="id">
       <view class="project-item" bindtap="viewProjectDetail" data-id="{{item._id}}">
@@ -21,14 +16,4 @@
     <text>暂无项目发布</text>
   </view>
   </scroll-view>
-  <view class="footer">
-    <button bindtap="navigateToPage1" class="bottom-button" 
-    style="width: 100rpx">社区</button>
-    <button bindtap="navigateToPage2" class="bottom-button" 
-    style="width: 100rpx">项目</button>
-    <button bindtap="navigateToPage3" class="bottom-button" 
-    style="width: 100rpx">导师</button>
-    <button bindtap="navigateToPage4" class="bottom-button" 
-    style="width: 100rpx">我的</button>
-  </view>
 </view>

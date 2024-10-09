@@ -2,8 +2,6 @@
   <view class="form">
     <text>项目名称:</text>
     <input type="text" maxlength="7" placeholder="请输入项目名称" bindinput="onProjectNameInput" />
-    <text>创建者:</text>
-    <input type="text" placeholder="请输入您的账号" bindinput="onMembersInput" />
     <text>项目最大人数:</text>
     <input type="number" placeholder="请输入本次项目的限制人数" bindinput="onLimitInput" />
     <text>项目简介:</text>

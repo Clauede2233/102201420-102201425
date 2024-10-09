@@ -7,7 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isDataLoaded: false,
+    userid:'',
     mess: '',
+    avatarUrl:'/images/user_male.jpg',
     content: [], // 聊天信息
     mineAvatorSrc: '/images/user_male.jpg',
     himAvatorSrc: '/images/user_female.jpg',
@@ -16,6 +19,24 @@ Page({
   onLoad: function (options) {
     // 从 onLoad 的 options 参数中获取 _id
     const projectId = options.projectId;
+    wx.cloud.callFunction({
+      name: 'getprofile', //获取用户信息  
+      success: res => {   
+        if (res.result.success) {  
+          this.setData({  
+            userid: res.result.data._id, //获取用户ID  
+            avatarUrl:res.result.data.avatarUrl,//获取用户头像
+          });  
+          console.log(this.data.userid)
+        } else {  
+          console.error('获取用户信息失败:', res.result.message);  
+        }  
+      },  
+      fail: err => {  
+        console.error('调用云函数失败:', err);  
+      } 
+    });
+    console.log(this.data.projectId)
     if (projectId) {
       this.setData({
         projectId: projectId
@@ -29,6 +50,11 @@ Page({
       });
     }
     console.log(this.data.projectId);
+    setTimeout(() => {
+      this.setData({
+        isDataLoaded: true // 数据加载完成
+      });
+    },300);
   },
   // 获取格式化的时间 yyyy-mm-dd hh:mm:ss
   getFormatTime() {
@@ -37,25 +63,27 @@ Page({
     let hms = date.toTimeString().substring(0, 8); // 小时-分钟-秒钟
     return ymd + " " + hms; // 拼接
   },
-
 // “发送”
 sendMess() {
   let that = this;
   let mess = that.data.mess;
+  let userid = that.data.userid;
+  let avatarUrl = that.data.avatarUrl;
   let date = that.getFormatTime();
   wx.showLoading({ title: '发送中...', mask: true });
-
   // 查询是否存在聊天记录
   db.collection('chatRecords').where({
-    projectId: that.data.projectId
+    projectId: that.data.projectId,
+    userid: that.data.id
   }).get().then(res => {
     if (res.data.length > 0) {
       // 如果存在聊天记录，更新该记录
       let recordId = res.data[0]._id;
       let newMessage = {
-        id: 0, // 用户自己发送，为0
+        avatarUrl: avatarUrl,
+        id: userid,
         text: mess,
-        date: date
+        date: date,
       };
       db.collection('chatRecords').doc(recordId).update({
         data: {
@@ -82,7 +110,8 @@ sendMess() {
     } else {
       // 如果不存在聊天记录，创建新的记录
       let newMessage = {
-        id: 0,
+        avatarUrl: avatarUrl,
+        id: userid,
         text: mess,
         date: date
       };
@@ -115,6 +144,7 @@ sendMess() {
 
   // 查询聊天
   queryChat() {
+    console.log(this.data.userid);
     let that = this;
     wx.showLoading({
       title: '加载中...',

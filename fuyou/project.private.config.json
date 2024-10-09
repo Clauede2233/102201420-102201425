@@ -7,6 +7,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "home/person/project/index",
+          "pathName": "home/person/project/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "home/project/detail/index",
           "pathName": "home/project/detail/index",
           "query": "id=2ad666ce670375580e46cbe3185757fb",
