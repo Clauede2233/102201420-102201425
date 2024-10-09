@@ -5,13 +5,14 @@ cloud.init();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const { _id, account } = event; // 获取项目ID和账号信息
+  const { projectId, account } = event; // 获取项目ID和账号信息
   const db = cloud.database();
+  console.log(projectId);
   const projectCollection = db.collection('projects');
-
+ 
   try {
     // 获取项目信息
-    const result = await projectCollection.doc(_id).get();
+    const result = await projectCollection.doc(projectId).get();
     if (!result || result.data.length === 0) {
       return {
         success: false,
@@ -31,7 +32,7 @@ exports.main = async (event, context) => {
     }
 
     // 添加账号到申请列表
-    const updateResult = await projectCollection.doc(_id).update({
+    const updateResult = await projectCollection.doc(projectId).update({
       data: {
         applicants: db.command.push(account) // 使用 push 操作符来添加申请者
       }
