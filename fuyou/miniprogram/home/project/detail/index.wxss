@@ -56,6 +56,14 @@
   color: rgb(7, 7, 7);
   margin-bottom: 10rpx;
 }
+.major {
+  position: relative;
+  right: 0%;
+  top: 58px;
+  font-size: 25rpx;
+  color: rgb(7, 7, 7);
+  margin-bottom: 8rpx;
+}
 
 .members {
   position: relative;
@@ -79,7 +87,7 @@
   top: 60px;
   font-size: 26rpx;
   width: 96%;
-  height: 50%;
+  height: 48%;
   border: 1px solid rgb(117, 116, 116);
   border-radius: 5rpx;
   padding: 10rpx;

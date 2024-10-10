@@ -5,6 +5,7 @@
   <view class="divLine1"></view>
   <text class="members">创建者：{{project.name[0]}}</text>
   <text class="limit">人数限制: {{project.limit}}人</text>
+  <text class="major">专业倾向: {{project.projectMajor}}</text>
   <view class="divLine2"></view>
   <text class="description">详细内容：</text>
   <textarea class="main_description"value="{{project.projectDescription}}" disabled></textarea>

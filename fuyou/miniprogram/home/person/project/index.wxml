@@ -15,6 +15,7 @@
         <text class="project-name">{{item.projectName}}</text>
         <text class="project-limit">人数限制: {{item.limit}}</text>
         <text class="project-simple">{{item.projectSimple}}</text>
+        <text class="project-simple">专业倾向：{{item.projectMajor}}</text>
         <view class="bottum-container2">
           <button class="bottom-fix2"style="width: 170rpx">项目详情</button>
         </view>

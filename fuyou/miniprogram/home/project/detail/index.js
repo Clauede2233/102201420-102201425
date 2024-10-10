@@ -43,7 +43,6 @@ Page({
     wx.cloud.callFunction({
       name: 'getprofile', // 替换为你的云函数名称  
       success: res => {  
-        // 假设云函数返回的数据结构为 { success: true, data: { account: '...' } }  
         if (res.result.success) {  
           this.setData({  
             account: res.result.data.account,
@@ -68,8 +67,6 @@ Page({
       name: 'joinprojectrequest_id', // 云函数名
       data: { projectId, account },
       success: res => {
-        // 处理成功后的逻辑，比如更新 outputText
-        // 假设云函数返回的数据结构是 { success: true/false, message: '描述信息' }
         const { success, message } = res.result;
         if (success) {
           // 申请成功的逻辑
