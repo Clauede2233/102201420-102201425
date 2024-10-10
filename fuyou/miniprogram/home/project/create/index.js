@@ -1,6 +1,7 @@
 Page({
   data: {
     projectName: '',     // 项目名字
+    projectMajor:'',     //项目专业倾向
     projectSimple: '',   // 项目简介
     projectDescription: '', // 项目（详细)描述
     members: '',        // 项目参与者
@@ -15,6 +16,11 @@ Page({
   onProjectNameInput: function(e) {
     this.setData({
       projectName: e.detail.value
+    });
+  },
+  onProjectMajorInput: function(e) {
+    this.setData({
+      projectMajor: e.detail.value
     });
   },
   onProjectSimpleInput: function(e) {
@@ -36,9 +42,9 @@ Page({
   },
 
   createProject: function() {
-    const { projectName, projectSimple, projectDescription,limit } = this.data;
+    const { projectName, projectMajor,projectSimple, projectDescription,limit } = this.data;
 
-    if (!projectName || !projectDescription) {
+    if (!projectName || !projectDescription|| !projectMajor) {
       wx.showToast({
         title: '请填写所有字段',
         icon: 'none'
@@ -55,6 +61,7 @@ Page({
             name: 'createProject', // 云函数名称
             data: {
               projectName,
+              projectMajor,
               projectSimple,
               projectDescription,
               members:res.result.data.account.split(','), // 使用获取的用户账号
