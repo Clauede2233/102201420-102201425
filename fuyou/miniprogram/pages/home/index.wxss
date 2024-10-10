@@ -1,7 +1,7 @@
 /* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
 /* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
 @font-face {
-  font-family: "阿里妈妈刀隶体 Regular";
+  font-family: "Regular";
   font-weight: 400;
   src: url("//at.alicdn.com/wf/webfont/mxblSXarYhDN/rwdARZAvio3A.woff2") format("woff2"),
   url("//at.alicdn.com/wf/webfont/mxblSXarYhDN/6i1ZOKYOqOAv.woff") format("woff");
@@ -11,12 +11,12 @@
   position: absolute; /* 绝对定位以覆盖在图片上 */
   display: flex;
   flex-direction: column; /* 垂直排列子元素 */
-  top: 45%;
-  left: 35%;
+  top: 50%;
+  left: 30%;
   transform: translate(1%, -50%); /* 居中对齐 */
   font-family: 'Regular', sans-serif; /* 设置字体 */
   font-style: italic;
-  font-size: 55px;
+  font-size: 60px;
   color: rgb(255, 120, 80); /* 设置文本颜色 */
   text-align: center; /* 文本居中 */
 }

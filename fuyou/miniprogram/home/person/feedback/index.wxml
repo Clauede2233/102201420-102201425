@@ -1,0 +1,12 @@
+<view class="container">
+  <image class="background-image" src="/images/pink6.jpg" mode="aspectFill"></image>
+  <p class="content">联系电话：18359375166</p>
+  <p class="content1">客服邮箱：2827955818@qq.com</p>
+  <p class="content2">欢迎您的致电</p>
+  <view class="footer">
+    <button bindtap="navigateToPage2" class="bottom-button" 
+    style="width: 200rpx">项目</button>
+    <button bindtap="navigateToPage4" class="bottom-button" 
+    style="width: 200rpx">我的</button>
+  </view>
+</view>

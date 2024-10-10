@@ -62,6 +62,11 @@ Page({
       url: '/home/person/project/index' // 替换为目标页面的路径
     });
   },
+  navigateToperson4: function() {
+    wx.navigateTo({
+      url: '/home/person/feedback/index' // 替换为目标页面的路径
+    });
+  },
   navigateToPage1: function() {
     wx.navigateTo({
       url: '/home/community/index' // 替换为目标页面的路径
