@@ -9,7 +9,6 @@
 <view class="container">
   <image class="background-image" src="/images/pink0.jpg" mode="aspectFill"></image>
   <text class="title">我的项目:</text>
-  <text class="title">我的项目:</text>
   <scroll-view class="project-list"scroll-y="true">
     <block wx:for="{{projects}}" wx:key="id" wx:if="{{foo.include(item.membersid,userid)}}">
       <view class="project-item" bindtap="viewProjectDetail" data-id="{{item._id}}">

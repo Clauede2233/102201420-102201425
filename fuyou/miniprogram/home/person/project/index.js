@@ -59,7 +59,7 @@ Page({
   viewProjectDetail: function(event) {
     const projectId = event.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/home/project/detail/index?id='+projectId
+      url: '/home/project/detail2/index?id='+projectId
     });
   },
   ProjectDetail: function(event) {

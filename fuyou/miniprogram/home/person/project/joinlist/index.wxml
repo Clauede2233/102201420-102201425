@@ -1,0 +1,21 @@
+<view class="container">
+  <image class="background-image" src="/images/pink0.jpg" mode="aspectFill"></image>
+  <text class="title">申请成员列表:</text>
+  <scroll-view class="project-list"scroll-y="true">
+    <block wx:for="{{profiles}}" wx:key="index">
+      <view class="profile-item">
+        <text class="project-name">姓名: {{item.name}}</text>
+        <text class="project-simple">账号: {{item.account}}</text>
+      </view>
+      <view class="bottum-container2" data-account="{{item.account}}" bindtap="onReject">
+        <button class="bottom-fix2"style="width: 100rpx ">拒绝</button>
+      </view>
+      <view class="bottum-container3" data-account="{{item.account}}" bindtap="onApprove">
+        <button class="bottom-fix2"style="width: 100rpx" >同意</button>
+      </view>
+    </block>
+  <view wx:if="{{!profiles.length}}">
+    <text>暂无项目发布</text>
+  </view>
+  </scroll-view>
+</view>

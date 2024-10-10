@@ -1,0 +1,103 @@
+.container {
+  position: relative; /* 为了让内容可以覆盖在图片上 */
+  display: flex;
+  background-color: #f7b2b2;
+  width: 100%;
+  height: 100vh; /* 设置高度为视口高度 */
+}
+/* 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+  font-family: "阿里妈妈刀隶体 Regular";
+  font-weight: 200;
+  src: url("//at.alicdn.com/wf/webfont/mxblSXarYhDN/IbEZgjUqFKY7.woff2") format("woff2"),
+  url("//at.alicdn.com/wf/webfont/mxblSXarYhDN/IxJDR0jvKFj5.woff") format("woff");
+  font-display: swap;
+}
+.content {
+  position: absolute; /* 绝对定位以覆盖在图片上 */
+  display: flex;
+  flex-direction: column; /* 垂直排列子元素 */
+  top: 5%;
+  transform: translate(1%, -50%); /* 居中对齐 */
+  font-family: 'Regular', sans-serif; /* 设置字体 */
+  font-style: italic;
+  font-size: 40px;
+  color: rgb(228, 158, 131); /* 设置文本颜色 */
+  text-align: center; /* 文本居中 */
+}
+.background-image {
+  position:absolute;
+  width: 200%;
+  height: 100%; /* 使图片填满整个容器 */
+  opacity: 0.7; /* 设置透明度，范围从 0（完全透明）到 1（完全不透明） */
+}
+.title {
+  position: relative;
+  top: 60px;
+  right: 0%;
+  font-size: 50rpx;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.description {
+  position: relative;
+  right: 39%;
+  top: 60px;
+  font-size: 26rpx;
+  margin-bottom: 15rpx;
+}
+
+.limit {
+  position: relative;
+  right: 0%;
+  top: 63px;
+  font-size: 25rpx;
+  color: rgb(7, 7, 7);
+  margin-bottom: 10rpx;
+}
+
+.members {
+  position: relative;
+  right: 0%;
+  top: 63px;
+  font-size: 25rpx;
+  color:  rgb(8, 8, 8);
+}
+
+.divLine1{
+  position: relative;
+  top: 60px;
+  background: #a0a0a0;
+  width: 100%;
+  height: 5rpx;
+} 
+
+.main_description {
+  position: relative;
+  left: 0%;
+  top: 60px;
+  font-size: 26rpx;
+  width: 96%;
+  height: 50%;
+  border: 1px solid rgb(117, 116, 116);
+  border-radius: 5rpx;
+  padding: 10rpx;
+  resize: none; /* 禁止用户手动调整大小 */
+}
+.join-button {
+  position: absolute;
+  top: 80%;
+  background-color: #fda5a5; 
+  color: white; 
+  padding: 5px 5px; 
+  border-radius: 100rpx; 
+}
+.chat-button {
+  position: absolute;
+  top: 90%;
+  background-color: #fda5a5; 
+  color: white; 
+  padding: 5px 5px; 
+  border-radius: 100rpx; 
+}

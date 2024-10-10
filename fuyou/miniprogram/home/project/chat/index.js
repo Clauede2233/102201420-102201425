@@ -17,7 +17,6 @@ Page({
     projectId: '' // 用于存储传来的projectId
   },
   onLoad: function (options) {
-    // 从 onLoad 的 options 参数中获取 _id
     const projectId = options.projectId;
     wx.cloud.callFunction({
       name: 'getprofile', //获取用户信息  

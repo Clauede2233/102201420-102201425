@@ -1,0 +1,13 @@
+<view class="container">
+  <image class="background-image" src="/images/cloud.jpg" mode="aspectFill"></image>
+  <p class="content">项目详情</p>
+  <text class="title">{{project.projectName}}</text>
+  <view class="divLine1"></view>
+  <text class="members">创建者：{{project.name}}</text>
+  <text class="limit">人数限制: {{project.limit}}人</text>
+  <view class="divLine2"></view>
+  <text class="description">详细内容：</text>
+  <textarea class="main_description"value="{{project.projectDescription}}" disabled></textarea>
+  <button class="join-button" bindtap="Joinlist" data-id="{{project._id}}">申请列表</button>
+  <button class="chat-button" bindtap="ChatProject" data-id="{{project._id}}">项目交流</button>
+</view>
