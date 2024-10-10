@@ -1,6 +1,5 @@
 <view class="root" wx:if="{{isDataLoaded}}">
 	<scroll-view class="sv" scroll-y scroll-into-view="{{toBottom}}">
- 
 		<view class="box" wx:for="{{content}}" id="item{{index}}">
 			<view class="item" wx:if="{{item.id == userid}}">
 				<view class="mineTextBox">

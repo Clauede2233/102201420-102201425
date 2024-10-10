@@ -11,6 +11,7 @@ Page({
 
   onLoad: function (options) {
     const projectId = options.projectId;
+    applicants: [];
     this.fetchApplicants(projectId); // 加载申请者列表
     this.getUserProfiles(projectId);
   },
@@ -101,9 +102,44 @@ Page({
     });
   },
 
-
+  onApprove: function(event) {
+    const account = event.currentTarget.dataset.account; // 获取账号信息
+    const projectId = this.data.projectId; // 替换为实际的项目ID
+    console.log('Project ID:', projectId);
+    console.log('Account:', account);
+    wx.cloud.callFunction({
+      name: 'joinproject_id', // 云函数名称
+      data: {
+        _id: projectId, // 替换为实际的项目ID
+        account: account // 使用从按钮获取的账号信息
+      },
+      success: res => {
+        if (res.result.success) {
+          wx.showToast({
+            title: '成功接受申请',
+            icon: 'success'
+          });
+          console.log('成功接受申请:', res.result.message);
+          this.fetchApplicants(projectId); // 重新加载申请者列表
+          this.getUserProfiles(projectId);
+        } else {
+          wx.showToast({
+            title: '接受失败',
+            icon: 'none'
+          });
+          console.error('接受申请失败:', res.result.message);
+        }
+      },
+      fail: err => {
+        wx.showToast({
+          title: '调用失败',
+          icon: 'none'
+        });
+        console.error('调用云函数失败:', err);
+      }
+    });
+  },
   onReject: function(event) {
-    
     const account = event.currentTarget.dataset.account; // 获取账号信息
     const projectId = this.data.projectId; // 替换为实际的项目ID
     console.log('Project ID:', projectId);
@@ -120,6 +156,8 @@ Page({
             title: '成功拒绝申请',
             icon: 'success'
           });
+          this.fetchApplicants(projectId); // 重新加载申请者列表
+          this.getUserProfiles(projectId);
           console.log('成功拒绝申请:', res.result.message);
         } else {
           wx.showToast({

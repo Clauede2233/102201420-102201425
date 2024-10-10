@@ -15,7 +15,7 @@
       </view>
     </block>
   <view wx:if="{{!profiles.length}}">
-    <text>暂无项目发布</text>
+    <text>暂无申请名单</text>
   </view>
   </scroll-view>
 </view>
