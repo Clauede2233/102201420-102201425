@@ -3,7 +3,7 @@
   <p class="content">项目详情</p>
   <text class="title">{{project.projectName}}</text>
   <view class="divLine1"></view>
-  <text class="members">创建者：{{project.name}}</text>
+  <text class="members">创建者：{{project.name[0]}}</text>
   <text class="limit">人数限制: {{project.limit}}人</text>
   <view class="divLine2"></view>
   <text class="description">详细内容：</text>
