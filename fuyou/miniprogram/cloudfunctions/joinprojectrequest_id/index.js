@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
 
     const project = result.data; // 获取项目详情
     const { applicants } = project; // 获取申请列表
-
+    const { members } = project
     // 检查账号是否已经在申请列表中
     if (applicants && applicants.includes(account)) {
       return {
@@ -30,7 +30,12 @@ exports.main = async (event, context) => {
         message: '账号已在申请列表中'
       };
     }
-
+    if (members && members.includes(account)) {
+      return {
+        success: false,
+        message: '账号已在成员列表中'
+      };
+    }
     // 添加账号到申请列表
     const updateResult = await projectCollection.doc(projectId).update({
       data: {
